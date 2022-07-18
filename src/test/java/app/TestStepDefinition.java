@@ -1,15 +1,15 @@
 package app;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @DisplayName("JUNIT5")
-public class TestStepDefinition {
+class TestStepDefinition {
 
     @Test
-    public void testLoginSuccess() {
+    void testLoginSuccess() {
         String email = "metis.auto.maker@gmail.com";
         String pwd = "Fpt@1234";
 
@@ -21,7 +21,7 @@ public class TestStepDefinition {
     }
 
     @Test
-    public void testLoginFail() {
+    void testLoginFail() {
         String email = "thaodtp12@fsoft.com";
         String pwd = "1234@";
         StepDefinition stepDef = new StepDefinition();
