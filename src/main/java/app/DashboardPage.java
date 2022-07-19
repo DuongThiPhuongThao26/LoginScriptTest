@@ -18,7 +18,6 @@ public class DashboardPage extends BasePage {
 
     public String getUrlDashboardPage() {
         waiForDisplay(dashboard);
-        driver.findElement(dashboard).isDisplayed();
         return getCurrentUrl();
     }
 }
