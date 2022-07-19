@@ -1,50 +1,42 @@
 package app;
 
-import java.time.Duration;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class LoginPage {
-
-    private final WebDriver driver;
+public class LoginPage extends BasePage {
 
     private final By emailInput = By.cssSelector("[type='text'][placeholder='Email ID']");
-
     private final By passwordInput = By.cssSelector("[type='password'][placeholder='Password']");
-
-    private final By LoginBtn = By.xpath("//button[@type='submit']");
+    private final By loginBtn = By.xpath("//button[@type='submit']");
     private final By errorBox = By.xpath("//div[@class='login-page__form__error-box']");
+    WebDriver driver;
+    BasePage basePage;
 
     public LoginPage(WebDriver driver) {
+        super(driver);
         this.driver = driver;
+        basePage = new BasePage(this.driver);
     }
 
     public void enterEmail(String email) {
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        wait.until(ExpectedConditions.elementToBeClickable(emailInput));
-
-        WebElement emailId = driver.findElement(emailInput);
-        emailId.sendKeys(email);
+        waiForDisplay(emailInput);
+        driver.findElement(emailInput).sendKeys(email);
     }
 
     public void enterPassword(String pwd) {
-
-        WebElement password = driver.findElement(passwordInput);
-        password.sendKeys(pwd);
+        waiForDisplay(passwordInput);
+        driver.findElement(passwordInput).sendKeys(pwd);
     }
 
     public void clickButton() {
-        driver.findElement(LoginBtn).click();
+        waiForDisplay(loginBtn);
+        driver.findElement(loginBtn).click();
     }
 
     public boolean canNotLogin() {
         try {
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(errorBox));
+            waiForDisplay(errorBox);
             return driver.findElement(errorBox).isDisplayed();
         } catch (TimeoutException timeoutException) {
             return false;

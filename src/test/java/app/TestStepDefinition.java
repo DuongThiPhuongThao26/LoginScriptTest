@@ -16,7 +16,6 @@ class TestStepDefinition {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
         String result = stepDef.login(email, pwd);
-
         assertEquals("https://dopl9dr063y3a.cloudfront.net/", result);
     }
 
