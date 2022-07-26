@@ -1,15 +1,23 @@
 package app;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.interactions.Actions;
 
 public class LoginPage extends BasePage {
 
-    private final By emailInput = By.cssSelector("[type='text'][placeholder='Email ID']");
-    private final By passwordInput = By.cssSelector("[type='password'][placeholder='Password']");
-    private final By loginBtn = By.xpath("//button[@type='submit']");
-    private final By errorBox = By.xpath("//div[@class='login-page__form__error-box']");
+    private final By emailInput = By.xpath("//input[@id='email']");
+    private final By passwordInput = By.xpath(
+        "//fieldset[@class='fieldset login']//input[@id='pass']");
+    private final By linkSignIn = By.xpath(
+        "//div[@class='panel header']//a[contains(text(),'Sign In')]");
+    By errorMessage = By.xpath(
+        "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']");
+
+    By signInBtn = By.xpath("///button[@class='action login primary']");
+
     WebDriver driver;
     BasePage basePage;
 
@@ -17,6 +25,11 @@ public class LoginPage extends BasePage {
         super(driver);
         this.driver = driver;
         basePage = new BasePage(this.driver);
+    }
+
+    public void ClickOnSignIn() {
+        waiForDisplay(linkSignIn);
+        driver.findElement(linkSignIn).click();
     }
 
     public void enterEmail(String email) {
@@ -30,17 +43,19 @@ public class LoginPage extends BasePage {
     }
 
     public void clickButton() {
-        waiForDisplay(loginBtn);
-        driver.findElement(loginBtn).click();
+        Actions action = new Actions(driver);
+        action.sendKeys(Keys.ENTER).build().perform();
     }
 
     public boolean canNotLogin() {
         try {
-            waiForDisplay(errorBox);
-            return driver.findElement(errorBox).isDisplayed();
+            waiForDisplay(errorMessage);
+            return driver.findElement(errorMessage).isDisplayed();
         } catch (TimeoutException timeoutException) {
             return false;
         }
     }
+
 }
+
 

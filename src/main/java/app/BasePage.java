@@ -13,7 +13,7 @@ public class BasePage {
 
     public BasePage(WebDriver driver) {
         this.driver = driver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     public void waiForDisplay(By element) {
@@ -21,7 +21,4 @@ public class BasePage {
         driver.findElement(element);
     }
 
-    public String getCurrentUrl() {
-        return driver.getCurrentUrl();
-    }
 }
