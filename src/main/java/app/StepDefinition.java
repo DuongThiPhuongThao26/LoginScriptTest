@@ -20,17 +20,13 @@ public class StepDefinition {
 
     }
 
-    public String login(String email, String pwd) {
+    public HomePage login(String email, String pwd) {
         LoginPage loginPage = new LoginPage(driver);
-        HomePage homePage = new HomePage(driver);
         loginPage.ClickOnSignIn();
         loginPage.enterEmail(email);
         loginPage.enterPassword(pwd);
         loginPage.clickButton();
-        if (loginPage.canNotLogin()) {
-            return driver.getTitle();
-        }
-        return homePage.getTittleHomePage();
+        return new HomePage(driver);
     }
 }
 

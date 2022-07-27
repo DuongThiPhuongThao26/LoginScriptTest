@@ -4,15 +4,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.WebDriver;
 
 @DisplayName("JUNIT5")
 class TestStepDefinition {
 
     @Test
-    void testLoginSuccess() {
+    void testInputValidEmailPwd() {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        String result = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@");
-        assertEquals("Home Page", result);
+        HomePage HomePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@");
+        assertEquals("Home Page", HomePage.getTittleHomePage());
     }
+
 }

@@ -16,8 +16,6 @@ public class LoginPage extends BasePage {
     By errorMessage = By.xpath(
         "//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']");
 
-    By signInBtn = By.xpath("///button[@class='action login primary']");
-
     WebDriver driver;
     BasePage basePage;
 

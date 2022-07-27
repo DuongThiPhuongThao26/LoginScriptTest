@@ -10,7 +10,6 @@ public class ConfigProperties {
         Properties prop = new Properties();
         try (InputStream input = getClass().getClassLoader().getResourceAsStream("config.properties")) {
             prop.load(input);
-            // get the property value and print it out
             return prop.getProperty(configName);
         } catch (IOException ex) {
             ex.printStackTrace();
