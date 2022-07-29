@@ -15,7 +15,7 @@ public class TestProductPage {
   By productSize = By.xpath("//div[contains(@option-label,'M')]");
   By productColor = By.xpath("//div[contains(@aria-label,'White')]");
   By addToCartButton = By.xpath("//span[normalize-space()='Add to Cart']");
-  By messageAddSuccess = By.xpath("//div[@data-bind='html: $parent.prepareMessageForHtml(message.text)']");
+  By messageAddSuccess = By.xpath("//div[contains(@data-bind,'html: $parent.prepareMessageForHtml(message.text)')]");
   By category = By.xpath("//a[contains(text(),'Tops')]");
 
   @Test

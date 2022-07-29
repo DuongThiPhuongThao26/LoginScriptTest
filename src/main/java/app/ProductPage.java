@@ -25,6 +25,7 @@ public class ProductPage extends BasePage {
   }
 
   public String getMessage(By announcementMessage) {
+    waiForDisplay(announcementMessage);
     return driver.findElement(announcementMessage).getText();
   }
 
