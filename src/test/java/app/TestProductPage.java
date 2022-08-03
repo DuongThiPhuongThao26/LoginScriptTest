@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 
 @DisplayName("JUNIT5")
 public class TestProductPage {
-  WebDriver driver;
   By product = By.xpath("//a[@class='product photo product-item-photo']//img[@alt='Breathe-Easy Tank']");
   By productSize = By.xpath("//div[contains(@option-label,'M')]");
   By productColor = By.xpath("//div[contains(@aria-label,'White')]");

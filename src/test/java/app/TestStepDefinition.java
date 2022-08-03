@@ -9,7 +9,7 @@ import org.openqa.selenium.WebDriver;
 
 @DisplayName("JUNIT5")
 class TestStepDefinition {
-static WebDriver driver;
+
     @Test
     void testInputValidEmailPwd() {
         StepDefinition stepDef = new StepDefinition();

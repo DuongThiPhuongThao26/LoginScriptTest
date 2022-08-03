@@ -6,8 +6,9 @@ import org.openqa.selenium.WebDriver;
 public class ProductPage extends BasePage {
   WebDriver driver;
   BasePage basePage;
-  By cartIcon = By.xpath("//a[@class='action showcart active']");
+  By cartIcon = By.xpath("//body/div/header/div/div[@data-block='minicart']/a[1]");
   By linkViewCart = By.xpath("//span[normalize-space()='View and Edit Cart']");
+  By trashIcon = By.xpath("//a[@title='Remove item']");
 
   public ProductPage(WebDriver driver) {
     super(driver);
@@ -29,10 +30,19 @@ public class ProductPage extends BasePage {
     return driver.findElement(announcementMessage).getText();
   }
 
-  public ViewCartPage viewAndEditCart() {
+  public void clickOnCart(){
+    waiForDisplay(cartIcon);
     driver.findElement(cartIcon).click();
+  }
+
+  public void clickOnRemoveItem(){
+    waiForDisplay(trashIcon);
+    driver.findElement(trashIcon).click();
+  }
+
+  public ViewCartPage viewAndEditCart() {
     waiForDisplay(linkViewCart);
     driver.findElement(linkViewCart).click();
-    return new ViewCartPage();
+    return new ViewCartPage(driver);
   }
 }
