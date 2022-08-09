@@ -24,7 +24,8 @@ public class ViewCartPage extends ProductPage {
         return driver.findElement(cartEmpty).getText();
     }
 
-    public void editItem(){
-
+    public void editItem(By editIcon){
+        waiForDisplay(editIcon);
+        driver.findElement(editIcon).click();
     }
 }

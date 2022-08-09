@@ -26,8 +26,9 @@ public class TestProductPage {
     WomenPage womenPage = homePage.clickOnWomenTab();
     womenPage.ClickOnCategory(category);
     ProductPage productPage = womenPage.clickOnProduct(product);
-    productPage.addToCart(productSize, productColor, addToCartButton);
+
+    productPage.addToCart(productSize, productColor);
+    productPage.clickOnAddToCartButton(addToCartButton);
     assertEquals("You added Breathe-Easy Tank to your shopping cart.", productPage.getMessage(messageAddSuccess));
   }
-
 }

@@ -13,7 +13,7 @@ public class BasePage {
 
   public BasePage(WebDriver driver) {
     this.driver = driver;
-    wait = new WebDriverWait(driver, Duration.ofSeconds(200));
+    wait = new WebDriverWait(driver, Duration.ofMinutes(10));
   }
 
   public void waiForDisplay(By element) {
