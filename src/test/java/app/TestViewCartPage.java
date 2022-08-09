@@ -21,8 +21,6 @@ public class TestViewCartPage {
 
     By quantityBox = By.xpath("//input[@id='qty']");
 
-    By updateShoppingCart = By.xpath("//button[@title='Update Shopping Cart']");
-
     @Test
     public void removeItem() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
@@ -67,7 +65,7 @@ public class TestViewCartPage {
 
         productPage.addToCart(productSize, productColor);
 
-        viewCartPage.editProductQuantity(quantityBox, "3", updateShoppingCart);
+        viewCartPage.editProductQuantity(quantityBox, "3");
         productPage.clickOnUpdateCartButton(updateCart);
 
         assertEquals("Breathe-Easy Tank was updated in your shopping cart.", viewCartPage.getTextOfMessageUpdateProduct(updateCartMessage));

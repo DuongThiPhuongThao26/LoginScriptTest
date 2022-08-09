@@ -16,8 +16,8 @@ public class HomePage extends BasePage {
         basePage = new BasePage(this.driver);
     }
 
-    public String getTittleHomePage() {
-        return driver.getTitle();
+    public String getUrl() {
+        return driver.getCurrentUrl();
     }
 
     public WomenPage clickOnWomenTab() {
