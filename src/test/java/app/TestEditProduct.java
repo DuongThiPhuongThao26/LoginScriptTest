@@ -19,7 +19,7 @@ public class TestEditProduct {
         womenPage.ClickOnCategory(Locator.category);
         ProductPage productPage = womenPage.clickOnProduct(Locator.product);
         productPage.addToCart(Locator.productSize, Locator.productColor);
-        productPage.clickOnAddToCartButton(Locator.addToCartButton);
+        productPage.clickOnAddToCartButton(Locator.addCartButton);
         Thread.sleep(3000);
         productPage.clickOnCart();
 

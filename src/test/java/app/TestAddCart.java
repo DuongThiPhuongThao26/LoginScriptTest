@@ -20,7 +20,7 @@ public class TestAddCart {
     ProductPage productPage = womenPage.clickOnProduct(Locator.product);
 
     productPage.addToCart(Locator.productSize, Locator.productColor);
-    productPage.clickOnAddToCartButton(Locator.addToCartButton);
+    productPage.clickOnAddToCartButton(Locator.addCartButton);
     assertEquals("You added Breathe-Easy Tank to your shopping cart.", productPage.getMessage(Locator.messageAddSuccess));
 
     Thread.sleep(3000);
