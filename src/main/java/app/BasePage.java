@@ -20,4 +20,5 @@ public class BasePage {
     wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     driver.findElement(element);
   }
+
 }

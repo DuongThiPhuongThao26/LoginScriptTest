@@ -41,4 +41,8 @@ public class LoginPage extends BasePage {
     Actions action = new Actions(driver);
     action.sendKeys(Keys.ENTER).build().perform();
   }
+  public String getErrorMessage(By errorMessage){
+    waiForDisplay(errorMessage);
+    return driver.findElement(errorMessage).getText();
+  }
 }
