@@ -18,7 +18,7 @@ public class TestProductPage {
   By category = By.xpath("//a[contains(text(),'Tops')]");
 
   @Test
-  public void testAddToCart() {
+  public void testAddToCart() throws InterruptedException {
     StepDefinition stepDef = new StepDefinition();
     stepDef.initDriver();
     HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@");
@@ -30,5 +30,9 @@ public class TestProductPage {
     productPage.addToCart(productSize, productColor);
     productPage.clickOnAddToCartButton(addToCartButton);
     assertEquals("You added Breathe-Easy Tank to your shopping cart.", productPage.getMessage(messageAddSuccess));
+
+
+    Thread.sleep(3000);
+    stepDef.quitBrowser();
   }
 }

@@ -11,10 +11,13 @@ import org.openqa.selenium.WebDriver;
 class TestStepDefinition {
 
     @Test
-    void testInputValidEmailPwd() {
+    void testInputValidEmailPwd() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
         HomePage HomePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@");
         assertEquals("Home Page", HomePage.getTittleHomePage());
+
+        Thread.sleep(3000);
+        stepDef.quitBrowser();
     }
 }
