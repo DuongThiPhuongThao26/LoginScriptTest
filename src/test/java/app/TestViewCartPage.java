@@ -3,6 +3,7 @@ package app;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -17,6 +18,10 @@ public class TestViewCartPage {
     By editIcon = By.xpath("//a[@title='Edit item parameters']");
     By updateCart = By.xpath("//button[@title='Update Cart']");
     By updateCartMessage = By.xpath("//div[@data-ui-id='message-success']");
+
+    By quantityBox = By.xpath("//input[@id='qty']");
+
+    By updateShoppingCart = By.xpath("//button[@title='Update Shopping Cart']");
 
     @Test
     public void removeItem() throws InterruptedException {
@@ -35,9 +40,12 @@ public class TestViewCartPage {
 
         ViewCartPage viewCartPage = productPage.viewAndEditCart();
         viewCartPage.removeItem();
-        viewCartPage.getTextOfMessage(cartEmptyMessage);
+        viewCartPage.getTextOfMessageAddProduct(cartEmptyMessage);
 
-        assertEquals("You have no items in your shopping cart.", viewCartPage.getTextOfMessage(cartEmptyMessage));
+        assertEquals("You have no items in your shopping cart.", viewCartPage.getTextOfMessageAddProduct(cartEmptyMessage));
+
+        Thread.sleep(3000);
+        stepDef.quitBrowser();
     }
 
     @Test
@@ -58,10 +66,13 @@ public class TestViewCartPage {
         viewCartPage.editItem(editIcon);
 
         productPage.addToCart(productSize, productColor);
+
+        viewCartPage.editProductQuantity(quantityBox, "3", updateShoppingCart);
         productPage.clickOnUpdateCartButton(updateCart);
 
+        assertEquals("Breathe-Easy Tank was updated in your shopping cart.", viewCartPage.getTextOfMessageUpdateProduct(updateCartMessage));
 
-        assertEquals("Breathe-Easy Tank was updated in your shopping cart.", viewCartPage.getTextOfMessage(cartEmptyMessage));
+        Thread.sleep(3000);
+        stepDef.quitBrowser();
     }
-
 }

@@ -19,13 +19,26 @@ public class ViewCartPage extends ProductPage {
         driver.findElement(trashIcon).click();
     }
 
-    public String getTextOfMessage(By cartEmpty){
+    public String getTextOfMessageAddProduct(By cartEmpty){
         waiForDisplay(cartEmpty);
         return driver.findElement(cartEmpty).getText();
+    }
+
+    public String getTextOfMessageUpdateProduct(By updateCartMessage){
+        waiForDisplay(updateCartMessage);
+        return driver.findElement(updateCartMessage).getText();
     }
 
     public void editItem(By editIcon){
         waiForDisplay(editIcon);
         driver.findElement(editIcon).click();
     }
+
+    public void editProductQuantity(By quantityBox,String quantity, By updateShoppingCart){
+        waiForDisplay(quantityBox);
+        driver.findElement(quantityBox).click();
+        driver.findElement(quantityBox).clear();
+        driver.findElement(quantityBox).sendKeys(quantity);
+    }
+
 }

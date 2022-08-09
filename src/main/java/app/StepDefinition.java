@@ -12,12 +12,14 @@ public class StepDefinition {
 
   public void initDriver() {
 
-    WebDriverManager.chromedriver()
-        .browserVersion(configProperties.getConfig("ChromeVersion"))
-        .setup();
+    WebDriverManager.chromedriver().browserVersion(configProperties.getConfig("ChromeVersion")).setup();
     this.driver = new ChromeDriver();
     this.driver.get(configProperties.getConfig("WebUrl"));
     this.driver.manage().window().maximize();
+  }
+
+  public void quitBrowser(){
+    driver.quit();
   }
 
   public HomePage login(String email, String pwd) {
