@@ -2,7 +2,7 @@ package app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import app.Helpers.ExcelUtils;
+import Utils.ExcelUtils;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
