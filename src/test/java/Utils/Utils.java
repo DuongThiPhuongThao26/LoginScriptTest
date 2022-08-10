@@ -1,9 +1,10 @@
 package Utils;
 
-import org.apache.xmlbeans.impl.xb.xsdschema.Public;
 import org.openqa.selenium.By;
 
-public class Locator {
+public class Utils {
+    public static final String email = "duongphuong261020@gmail.com";
+    public static final String pwd = "Lungtung1234@";
     public static final By emailInput = By.xpath("//input[@id='email']");
     public static final By passwordInput = By.xpath("//fieldset[@class='fieldset login']//input[@id='pass']");
     public static final By linkSignIn = By.xpath("//div[@class='panel header']//a[contains(text(),'Sign In')]");

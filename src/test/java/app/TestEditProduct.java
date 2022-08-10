@@ -1,6 +1,6 @@
 package app;
 
-import Utils.Locator;
+import Utils.Utils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -13,25 +13,25 @@ public class TestEditProduct {
     public void editItem() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@", Locator.linkSignIn, Locator.emailInput, Locator.passwordInput);
+        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab(Locator.womenTab);
-        womenPage.ClickOnCategory(Locator.category);
-        ProductPage productPage = womenPage.clickOnProduct(Locator.product);
-        productPage.addToCart(Locator.productSize, Locator.productColor);
-        productPage.clickOnAddToCartButton(Locator.addCartButton);
+        WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
+        womenPage.ClickOnCategory(Utils.category);
+        ProductPage productPage = womenPage.clickOnProduct(Utils.product);
+        productPage.addToCart(Utils.productSize, Utils.productColor);
+        productPage.clickOnAddToCartButton(Utils.addCartButton);
         Thread.sleep(3000);
-        productPage.clickOnCart(Locator.cartIcon);
+        productPage.clickOnCart(Utils.cartIcon);
 
-        ViewCartPage viewCartPage = productPage.viewAndEditCart(Locator.linkViewCart);
-        viewCartPage.editItem(Locator.editIcon);
+        ViewCartPage viewCartPage = productPage.viewAndEditCart(Utils.linkViewCart);
+        viewCartPage.editItem(Utils.editIcon);
 
-        productPage.addToCart(Locator.productSize, Locator.productColor);
+        productPage.addToCart(Utils.productSize, Utils.productColor);
 
-        viewCartPage.editProductQuantity(Locator.quantityBox, "3");
-        productPage.clickOnUpdateCartButton(Locator.updateCart);
+        viewCartPage.editProductQuantity(Utils.quantityBox, "3");
+        productPage.clickOnUpdateCartButton(Utils.updateCart);
 
-        assertEquals("Breathe-Easy Tank was updated in your shopping cart.", viewCartPage.getTextOfMessageUpdateProduct(Locator.updateCartMessage));
+        assertEquals("Breathe-Easy Tank was updated in your shopping cart.", viewCartPage.getTextOfMessageUpdateProduct(Utils.updateCartMessage));
 
         Thread.sleep(3000);
         stepDef.quitBrowser();

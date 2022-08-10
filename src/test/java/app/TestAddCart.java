@@ -2,10 +2,9 @@ package app;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import Utils.Locator;
+import Utils.Utils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.openqa.selenium.By;
 
 @DisplayName("JUNIT5")
 public class TestAddCart {
@@ -13,16 +12,16 @@ public class TestAddCart {
   public void testAddToCart() throws InterruptedException {
     StepDefinition stepDef = new StepDefinition();
     stepDef.initDriver();
-    HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@", Locator.linkSignIn, Locator.emailInput, Locator.passwordInput);
+    HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
 
-    WomenPage womenPage = homePage.clickOnWomenTab(Locator.womenTab);
-    womenPage.ClickOnCategory(Locator.category);
-    ProductPage productPage = womenPage.clickOnProduct(Locator.product);
-    productPage.addToCart(Locator.productSize, Locator.productColor);
-    productPage.clickOnAddToCartButton(Locator.addCartButton);
+    WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
+    womenPage.ClickOnCategory(Utils.category);
+    ProductPage productPage = womenPage.clickOnProduct(Utils.product);
+    productPage.addToCart(Utils.productSize, Utils.productColor);
+    productPage.clickOnAddToCartButton(Utils.addCartButton);
 
     String messageExpected = "You added Breathe-Easy Tank to your shopping cart.";
-    assertEquals(messageExpected, productPage.getMessageAddSuccess(Locator.messageAddSuccess));
+    assertEquals(messageExpected, productPage.getMessageAddSuccess(Utils.messageAddSuccess));
 
     Thread.sleep(3000);
     stepDef.quitBrowser();

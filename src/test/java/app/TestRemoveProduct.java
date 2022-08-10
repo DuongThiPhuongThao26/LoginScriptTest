@@ -1,10 +1,8 @@
 package app;
 
-import Utils.Locator;
+import Utils.Utils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -16,22 +14,22 @@ public class TestRemoveProduct {
     public void removeItemInViewCartPage() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@", Locator.linkSignIn, Locator.emailInput, Locator.passwordInput);
+        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab(Locator.womenTab);
-        womenPage.ClickOnCategory(Locator.category);
-        ProductPage productPage = womenPage.clickOnProduct(Locator.product);
-        productPage.addToCart(Locator.productSize, Locator.productColor);
-        productPage.clickOnAddToCartButton(Locator.addCartButton);
+        WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
+        womenPage.ClickOnCategory(Utils.category);
+        ProductPage productPage = womenPage.clickOnProduct(Utils.product);
+        productPage.addToCart(Utils.productSize, Utils.productColor);
+        productPage.clickOnAddToCartButton(Utils.addCartButton);
 
         Thread.sleep(3000);
-        productPage.clickOnCart(Locator.cartIcon);
+        productPage.clickOnCart(Utils.cartIcon);
 
-        ViewCartPage viewCartPage = productPage.viewAndEditCart(Locator.linkViewCart);
-        viewCartPage.removeItem(Locator.trashIcon);
-        viewCartPage.getTextOfMessageAddProduct(Locator.cartEmptyMessage);
+        ViewCartPage viewCartPage = productPage.viewAndEditCart(Utils.linkViewCart);
+        viewCartPage.removeItem(Utils.trashIcon);
+        viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage);
 
-        assertEquals("You have no items in your shopping cart.", viewCartPage.getTextOfMessageAddProduct(Locator.cartEmptyMessage));
+        assertEquals("You have no items in your shopping cart.", viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage));
 
         Thread.sleep(3000);
         stepDef.quitBrowser();
@@ -41,20 +39,20 @@ public class TestRemoveProduct {
     public void removeItemInCart() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@", Locator.linkSignIn, Locator.emailInput, Locator.passwordInput);
+        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab(Locator.womenTab);
-        womenPage.ClickOnCategory(Locator.category);
-        ProductPage productPage = womenPage.clickOnProduct(Locator.product);
-        productPage.addToCart(Locator.productSize, Locator.productColor);
-        productPage.clickOnAddToCartButton(Locator.addCartButton);
+        WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
+        womenPage.ClickOnCategory(Utils.category);
+        ProductPage productPage = womenPage.clickOnProduct(Utils.product);
+        productPage.addToCart(Utils.productSize, Utils.productColor);
+        productPage.clickOnAddToCartButton(Utils.addCartButton);
 
         Thread.sleep(3000);
-        productPage.clickOnCart(Locator.cartIcon);
+        productPage.clickOnCart(Utils.cartIcon);
 
-        productPage.removeProduct(Locator.removeIcon, Locator.alertMessage);
+        productPage.removeProduct(Utils.removeIcon, Utils.alertMessage);
 
-        assertEquals("You have no items in your shopping cart.", productPage.getMessageRemoveSuccess(Locator.messageRemoveSuccess));
+        assertEquals("You have no items in your shopping cart.", productPage.getMessageRemoveSuccess(Utils.messageRemoveSuccess));
 
         Thread.sleep(3000);
         stepDef.quitBrowser();
