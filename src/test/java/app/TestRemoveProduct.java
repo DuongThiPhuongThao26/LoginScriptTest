@@ -52,7 +52,7 @@ public class TestRemoveProduct {
         Thread.sleep(3000);
         productPage.clickOnCart(Locator.cartIcon);
 
-        productPage.removeProduct(Locator.removeIcon);
+        productPage.removeProduct(Locator.removeIcon, Locator.alertMessage);
 
         assertEquals("You have no items in your shopping cart.", productPage.getMessageRemoveSuccess(Locator.messageRemoveSuccess));
 
