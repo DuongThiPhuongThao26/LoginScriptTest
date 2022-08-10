@@ -15,13 +15,11 @@ public class WomenPage extends HomePage {
     }
 
     public void ClickOnCategory(By category) {
-        waiForDisplay(category);
-        driver.findElement(category).click();
+        basePage.Click(category);
     }
 
     public ProductPage clickOnProduct(By product) {
-        waiForDisplay(product);
-        driver.findElement(product).click();
+        basePage.Click(product);
         return new ProductPage(driver);
     }
 }

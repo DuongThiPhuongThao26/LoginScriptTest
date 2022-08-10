@@ -1,5 +1,4 @@
 package app;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,47 +13,37 @@ public class ProductPage extends BasePage {
     }
 
     public void addToCart(By productSize, By productColor) {
-        waiForDisplay(productSize);
-        driver.findElement(productSize).click();
-        waiForDisplay(productColor);
-        driver.findElement(productColor).click();
+        basePage.Click(productSize);
+        basePage.Click(productColor);
     }
 
     public void clickOnCart(By cartIcon) {
-        waiForDisplay(cartIcon);
-        driver.findElement(cartIcon).click();
+        basePage.Click(cartIcon);
     }
 
     public void clickOnAddToCartButton(By addToCartButton) {
-        waiForDisplay(addToCartButton);
-        driver.findElement(addToCartButton).click();
+        basePage.Click(addToCartButton);
     }
 
     public void clickOnUpdateCartButton(By updateCart) {
-        waiForDisplay(updateCart);
-        driver.findElement(updateCart).click();
+        basePage.Click(updateCart);
     }
 
-    public void removeProduct(By removeIcon, By alertMessage) {
-        waiForDisplay(removeIcon);
-        driver.findElement(removeIcon).click();
-        waiForDisplay(alertMessage);
+    public void removeProduct(By removeIcon) {
+        basePage.Click(removeIcon);
         driver.switchTo().alert().accept();
     }
 
     public String getMessageAddSuccess(By messageAddSuccess) {
-        waiForDisplay(messageAddSuccess);
-        return driver.findElement(messageAddSuccess).getText();
+        return basePage.getText(messageAddSuccess);
     }
 
     public String getMessageRemoveSuccess(By messageRemoveSuccess) {
-        waiForDisplay(messageRemoveSuccess);
-        return driver.findElement(messageRemoveSuccess).getText();
+        return basePage.getText(messageRemoveSuccess);
     }
 
     public ViewCartPage viewAndEditCart(By linkViewCart) {
-        waiForDisplay(linkViewCart);
-        driver.findElement(linkViewCart).click();
+        basePage.Click(linkViewCart);
         return new ViewCartPage(driver);
     }
 }

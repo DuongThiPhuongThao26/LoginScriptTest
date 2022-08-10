@@ -16,18 +16,15 @@ public class LoginPage extends BasePage {
     }
 
     public void ClickOnSignIn(By linkSignIn) {
-        waiForDisplay(linkSignIn);
-        driver.findElement(linkSignIn).click();
+        basePage.Click(linkSignIn);
     }
 
     public void enterEmail(String email, By emailInput) {
-        waiForDisplay(emailInput);
-        driver.findElement(emailInput).sendKeys(email);
+        basePage.sendKeys(emailInput, email);
     }
 
     public void enterPassword(String pwd, By passwordInput) {
-        waiForDisplay(passwordInput);
-        driver.findElement(passwordInput).sendKeys(pwd);
+        basePage.sendKeys(passwordInput, pwd);
     }
 
     public void clickButton() {

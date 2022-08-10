@@ -19,7 +19,21 @@ public class BasePage {
 
     public void waiForDisplay(By element) {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
-        driver.findElement(element);
     }
+
+    public void Click(By element) {
+        waiForDisplay(element);
+        driver.findElement(element).click();
+    }
+
+    public void sendKeys(By element, String text) {
+        waiForDisplay(element);
+        driver.findElement(element).sendKeys(text);
+    }
+    public String getText(By element){
+        waiForDisplay(element);
+        return driver.findElement(element).getText();
+    }
+
 
 }

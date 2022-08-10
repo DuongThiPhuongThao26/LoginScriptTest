@@ -19,8 +19,7 @@ public class HomePage extends BasePage {
     }
 
     public WomenPage clickOnWomenTab(By womenTab) {
-        waiForDisplay(womenTab);
-        driver.findElement(womenTab).click();
+        basePage.Click(womenTab);
         return new WomenPage(driver);
     }
 }

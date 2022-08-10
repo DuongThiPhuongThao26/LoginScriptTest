@@ -14,30 +14,25 @@ public class ViewCartPage extends ProductPage {
     }
 
     public void removeItem(By trashIcon) {
-        waiForDisplay(trashIcon);
-        driver.findElement(trashIcon).click();
+        basePage.Click(trashIcon);
     }
 
     public void editItem(By editIcon) {
-        waiForDisplay(editIcon);
-        driver.findElement(editIcon).click();
+        basePage.Click(editIcon);
     }
 
     public void editProductQuantity(By quantityBox, String quantity) {
-        waiForDisplay(quantityBox);
-        driver.findElement(quantityBox).click();
+        basePage.Click(quantityBox);
         driver.findElement(quantityBox).clear();
-        driver.findElement(quantityBox).sendKeys(quantity);
+        basePage.sendKeys(quantityBox, quantity);
     }
 
     public String getTextOfMessageAddProduct(By cartEmpty) {
-        waiForDisplay(cartEmpty);
-        return driver.findElement(cartEmpty).getText();
+        return basePage.getText(cartEmpty);
     }
 
     public String getTextOfMessageUpdateProduct(By updateCartMessage) {
-        waiForDisplay(updateCartMessage);
-        return driver.findElement(updateCartMessage).getText();
+        return basePage.getText(updateCartMessage);
     }
 
 }
