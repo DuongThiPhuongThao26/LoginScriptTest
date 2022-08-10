@@ -16,9 +16,8 @@ public class TestAddCart {
     HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@");
 
     WomenPage womenPage = homePage.clickOnWomenTab();
-    womenPage.ClickOnCategory(Locator.product);
+    womenPage.ClickOnCategory(Locator.category);
     ProductPage productPage = womenPage.clickOnProduct(Locator.product);
-
     productPage.addToCart(Locator.productSize, Locator.productColor);
     productPage.clickOnAddToCartButton(Locator.addCartButton);
     assertEquals("You added Breathe-Easy Tank to your shopping cart.", productPage.getMessage(Locator.messageAddSuccess));

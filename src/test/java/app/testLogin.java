@@ -3,42 +3,36 @@ package app;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import Utils.ExcelUtils;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.junit.Assert;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 
 @DisplayName("JUNIT5")
 class testLogin {
 
-    By errorMessage = By.xpath("//div[@class='message-error error message']");
     @Test
-    void testSignInSuccess() throws Exception {
-        StepDefinition stepDef = new StepDefinition();
-        stepDef.initDriver();
-
+    void testSignIn() throws Exception {
         ExcelUtils excelUtils = new ExcelUtils();
         excelUtils.setExcelFile("D:\\Project\\LoginScriptTest\\src\\test\\resources\\DataTest.xlsx", "DataTestLoginFunction");
-
-        HomePage HomePage = stepDef.login(excelUtils.getCellData("Email", 1), excelUtils.getCellData("Password", 1));
-        assertEquals("https://magento.softwaretestingboard.com/", HomePage.getUrl());
-
-        Thread.sleep(3000);
-        stepDef.quitBrowser();
-    }
-
-    @Test
-    void testSignInFail() throws Exception {
         StepDefinition stepDef = new StepDefinition();
-        stepDef.initDriver();
+        for (int i = 1; i <= 3; i++) {
+            stepDef.initDriver();
+            HomePage homePage = stepDef.login(excelUtils.getCellData("Email", i), excelUtils.getCellData("Password", i));
+            String urlExpected = "https://magento.softwaretestingboard.com/";
+            if (urlExpected.equals(homePage.getUrl())){
+                System.out.println("PASSED!");
+            } else {
+                System.out.println("FAILED!");
+            }
 
-        ExcelUtils excelUtils = new ExcelUtils();
-        excelUtils.setExcelFile("D:\\Project\\LoginScriptTest\\src\\test\\resources\\DataTest.xlsx", "DataTestLoginFunction");
+            Thread.sleep(3000);
+            stepDef.quitBrowser();
 
-        stepDef.login(excelUtils.getCellData("Email", 1), excelUtils.getCellData("Password", 1));
-        LoginPage loginPage = new LoginPage(stepDef.driver);
-        assertEquals("The account sign-in was incorrect or your account is disabled temporarily. Please wait and try again later.",loginPage.getErrorMessage(errorMessage));
-
-        Thread.sleep(3000);
-        stepDef.quitBrowser();
+        }
     }
+
 }

@@ -29,11 +29,13 @@ public class LoginPage extends BasePage {
 
   public void enterEmail(String email) {
     waiForDisplay(emailInput);
+    driver.findElement(emailInput).clear();
     driver.findElement(emailInput).sendKeys(email);
   }
 
   public void enterPassword(String pwd) {
     waiForDisplay(passwordInput);
+    driver.findElement(passwordInput).clear();
     driver.findElement(passwordInput).sendKeys(pwd);
   }
 

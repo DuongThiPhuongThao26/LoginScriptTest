@@ -11,7 +11,6 @@ public class StepDefinition {
   WebDriver driver;
 
   public void initDriver() {
-
     WebDriverManager.chromedriver().browserVersion(configProperties.getConfig("ChromeVersion")).setup();
     this.driver = new ChromeDriver();
     this.driver.get(configProperties.getConfig("WebUrl"));
