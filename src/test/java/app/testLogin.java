@@ -1,7 +1,5 @@
 package app;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import Utils.ExcelUtils;
 import Utils.Utils;
 import org.junit.jupiter.api.DisplayName;

@@ -22,8 +22,8 @@ public class Utils {
     public static final By quantityBox = By.xpath("//input[@id='qty']");
     public static final By trashIcon = By.xpath("//a[@class='action action-delete']");
     public static final By removeIcon = By.xpath("//a[@title='Remove item']");
-    public static final By alertMessage = By.xpath("//aside[contains(@class,'_show')]//div[contains(@class,'modal-inner-wrap')]");
     public static final By messageRemoveSuccess = By.xpath("//strong[@class='subtitle empty']");
     public static final By cartIcon = By.xpath("//div[@data-block='minicart']");
     public static final By linkViewCart = By.xpath("//span[normalize-space()='View and Edit Cart']");
+    public static final By acceptButton = By.xpath("//button[@class='action-primary action-accept']");
 }

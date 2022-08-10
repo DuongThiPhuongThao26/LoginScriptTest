@@ -29,10 +29,9 @@ public class ProductPage extends BasePage {
         basePage.Click(updateCart);
     }
 
-    public void removeProduct(By removeIcon, By alertMessage) {
+    public void removeProduct(By removeIcon, By acceptButton) {
         basePage.Click(removeIcon);
-        waiForDisplay(alertMessage);
-        driver.switchTo().alert().accept();
+        basePage.Click(acceptButton);
     }
 
     public String getMessageAddSuccess(By messageAddSuccess) {

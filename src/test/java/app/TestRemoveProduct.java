@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestRemoveProduct {
-    WebDriver driver;
     @Test
     public void removeItemInViewCartPage() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
@@ -50,7 +49,7 @@ public class TestRemoveProduct {
         Thread.sleep(3000);
         productPage.clickOnCart(Utils.cartIcon);
 
-        productPage.removeProduct(Utils.removeIcon, Utils.alertMessage);
+        productPage.removeProduct(Utils.removeIcon, Utils.acceptButton);
 
         assertEquals("You have no items in your shopping cart.", productPage.getMessageRemoveSuccess(Utils.messageRemoveSuccess));
 
