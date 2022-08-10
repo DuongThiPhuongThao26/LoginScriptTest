@@ -25,8 +25,8 @@ public class ProductPage extends BasePage {
         basePage.Click(addToCartButton);
     }
 
-    public void clickOnUpdateCartButton(By updateCart) {
-        basePage.Click(updateCart);
+    public void clickOnUpdateCartButton(By element) {
+        basePage.Click(element);
     }
 
     public void removeProduct(By removeIcon, By acceptButton) {
@@ -34,6 +34,15 @@ public class ProductPage extends BasePage {
         basePage.Click(acceptButton);
     }
 
+    public void changeQuantityItem(By quantityBoxInCart, String quantity){
+        basePage.Click(quantityBoxInCart);
+        basePage.clear(quantityBoxInCart);
+        basePage.sendKeys(quantityBoxInCart, quantity);
+    }
+
+    public String getCountItem(By element){
+        return basePage.getText(element);
+    }
     public String getMessageAddSuccess(By messageAddSuccess) {
         return basePage.getText(messageAddSuccess);
     }

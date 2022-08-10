@@ -28,7 +28,7 @@ public class TestRemoveProduct {
         viewCartPage.removeItem(Utils.trashIcon);
         viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage);
 
-        assertEquals("You have no items in your shopping cart.", viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage));
+        assertEquals(Utils.expectedRemoveSuccess, viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage));
 
         Thread.sleep(3000);
         stepDef.quitBrowser();
@@ -51,7 +51,7 @@ public class TestRemoveProduct {
 
         productPage.removeProduct(Utils.removeIcon, Utils.acceptButton);
 
-        assertEquals("You have no items in your shopping cart.", productPage.getMessageRemoveSuccess(Utils.messageRemoveSuccess));
+        assertEquals(Utils.expectedRemoveSuccess, productPage.getMessageRemoveSuccess(Utils.messageRemoveSuccess));
 
         Thread.sleep(3000);
         stepDef.quitBrowser();

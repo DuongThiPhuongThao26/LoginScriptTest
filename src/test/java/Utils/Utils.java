@@ -26,4 +26,11 @@ public class Utils {
     public static final By cartIcon = By.xpath("//div[@data-block='minicart']");
     public static final By linkViewCart = By.xpath("//span[normalize-space()='View and Edit Cart']");
     public static final By acceptButton = By.xpath("//button[@class='action-primary action-accept']");
+    public static final String expectedEditSuccess = "Breathe-Easy Tank was updated in your shopping cart.";
+    public static final String expectedRemoveSuccess = "You have no items in your shopping cart.";
+    public static final String quantity = "3";
+    public static final By quantityBoxInCart = By.xpath("//input[@id='cart-item-218-qty']");
+    public static final By updateButton = By.xpath("//button[@id='update-cart-item-218']");
+    public static final By countItem = By.xpath("//span[@class='count']");
+
 }

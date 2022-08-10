@@ -35,5 +35,9 @@ public class BasePage {
         return driver.findElement(element).getText();
     }
 
+    public void clear(By element){
+        waiForDisplay(element);
+        driver.findElement(element).clear();
+    }
 
 }
