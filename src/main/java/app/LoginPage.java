@@ -6,45 +6,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 
 public class LoginPage extends BasePage {
+    WebDriver driver;
+    BasePage basePage;
 
-  private final By emailInput = By.xpath("//input[@id='email']");
-  private final By passwordInput =
-      By.xpath("//fieldset[@class='fieldset login']//input[@id='pass']");
-  private final By linkSignIn =
-      By.xpath("//div[@class='panel header']//a[contains(text(),'Sign In')]");
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        this.driver = driver;
+        basePage = new BasePage(this.driver);
+    }
 
-  WebDriver driver;
-  BasePage basePage;
+    public void ClickOnSignIn(By linkSignIn) {
+        waiForDisplay(linkSignIn);
+        driver.findElement(linkSignIn).click();
+    }
 
-  public LoginPage(WebDriver driver) {
-    super(driver);
-    this.driver = driver;
-    basePage = new BasePage(this.driver);
-  }
+    public void enterEmail(String email, By emailInput) {
+        waiForDisplay(emailInput);
+        driver.findElement(emailInput).sendKeys(email);
+    }
 
-  public void ClickOnSignIn() {
-    waiForDisplay(linkSignIn);
-    driver.findElement(linkSignIn).click();
-  }
+    public void enterPassword(String pwd, By passwordInput) {
+        waiForDisplay(passwordInput);
+        driver.findElement(passwordInput).sendKeys(pwd);
+    }
 
-  public void enterEmail(String email) {
-    waiForDisplay(emailInput);
-    driver.findElement(emailInput).clear();
-    driver.findElement(emailInput).sendKeys(email);
-  }
+    public void clickButton() {
+        Actions action = new Actions(driver);
+        action.sendKeys(Keys.ENTER).build().perform();
+    }
 
-  public void enterPassword(String pwd) {
-    waiForDisplay(passwordInput);
-    driver.findElement(passwordInput).clear();
-    driver.findElement(passwordInput).sendKeys(pwd);
-  }
-
-  public void clickButton() {
-    Actions action = new Actions(driver);
-    action.sendKeys(Keys.ENTER).build().perform();
-  }
-  public String getErrorMessage(By errorMessage){
-    waiForDisplay(errorMessage);
-    return driver.findElement(errorMessage).getText();
-  }
 }

@@ -13,17 +13,17 @@ public class TestEditProduct {
     public void editItem() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@");
+        HomePage homePage = stepDef.login("duongphuong261020@gmail.com", "Lungtung1234@", Locator.linkSignIn, Locator.emailInput, Locator.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab();
+        WomenPage womenPage = homePage.clickOnWomenTab(Locator.womenTab);
         womenPage.ClickOnCategory(Locator.category);
         ProductPage productPage = womenPage.clickOnProduct(Locator.product);
         productPage.addToCart(Locator.productSize, Locator.productColor);
         productPage.clickOnAddToCartButton(Locator.addCartButton);
         Thread.sleep(3000);
-        productPage.clickOnCart();
+        productPage.clickOnCart(Locator.cartIcon);
 
-        ViewCartPage viewCartPage = productPage.viewAndEditCart();
+        ViewCartPage viewCartPage = productPage.viewAndEditCart(Locator.linkViewCart);
         viewCartPage.editItem(Locator.editIcon);
 
         productPage.addToCart(Locator.productSize, Locator.productColor);

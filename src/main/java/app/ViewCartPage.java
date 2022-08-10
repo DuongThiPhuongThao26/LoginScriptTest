@@ -7,15 +7,13 @@ public class ViewCartPage extends ProductPage {
     WebDriver driver;
     ProductPage productPage;
 
-    By trashIcon = By.xpath("//a[@class='action action-delete']");
-
     public ViewCartPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
         productPage = new ProductPage(this.driver);
     }
 
-    public void removeItem() {
+    public void removeItem(By trashIcon) {
         waiForDisplay(trashIcon);
         driver.findElement(trashIcon).click();
     }

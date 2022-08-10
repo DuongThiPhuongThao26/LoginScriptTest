@@ -6,8 +6,6 @@ import org.openqa.selenium.WebDriver;
 public class ProductPage extends BasePage {
     WebDriver driver;
     BasePage basePage;
-    By cartIcon = By.xpath("//div[@data-block='minicart']");
-    By linkViewCart = By.xpath("//span[normalize-space()='View and Edit Cart']");
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -22,6 +20,11 @@ public class ProductPage extends BasePage {
         driver.findElement(productColor).click();
     }
 
+    public void clickOnCart(By cartIcon) {
+        waiForDisplay(cartIcon);
+        driver.findElement(cartIcon).click();
+    }
+
     public void clickOnAddToCartButton(By addToCartButton) {
         waiForDisplay(addToCartButton);
         driver.findElement(addToCartButton).click();
@@ -32,17 +35,24 @@ public class ProductPage extends BasePage {
         driver.findElement(updateCart).click();
     }
 
-    public String getMessage(By announcementMessage) {
-        waiForDisplay(announcementMessage);
-        return driver.findElement(announcementMessage).getText();
+    public void removeProduct(By removeIcon, By alertMessage) {
+        waiForDisplay(removeIcon);
+        driver.findElement(removeIcon).click();
+        waiForDisplay(alertMessage);
+        driver.switchTo().alert().accept();
     }
 
-    public void clickOnCart() {
-        waiForDisplay(cartIcon);
-        driver.findElement(cartIcon).click();
+    public String getMessageAddSuccess(By messageAddSuccess) {
+        waiForDisplay(messageAddSuccess);
+        return driver.findElement(messageAddSuccess).getText();
     }
 
-    public ViewCartPage viewAndEditCart() {
+    public String getMessageRemoveSuccess(By messageRemoveSuccess) {
+        waiForDisplay(messageRemoveSuccess);
+        return driver.findElement(messageRemoveSuccess).getText();
+    }
+
+    public ViewCartPage viewAndEditCart(By linkViewCart) {
         waiForDisplay(linkViewCart);
         driver.findElement(linkViewCart).click();
         return new ViewCartPage(driver);
