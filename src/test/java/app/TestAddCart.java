@@ -20,8 +20,8 @@ public class TestAddCart {
     productPage.addToCart(Utils.productSize, Utils.productColor);
     productPage.clickOnAddToCartButton(Utils.addCartButton);
 
-    String messageExpected = "You added Breathe-Easy Tank to your shopping cart.";
-    assertEquals(messageExpected, productPage.getMessageAddSuccess(Utils.messageAddSuccess));
+
+    assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess(Utils.messageAddSuccess));
 
     Thread.sleep(3000);
     stepDef.quitBrowser();

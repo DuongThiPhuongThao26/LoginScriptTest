@@ -55,7 +55,7 @@ public class TestEditProduct {
         productPage.changeQuantityItem(Utils.quantityBoxInCart, Utils.quantity);
         productPage.clickOnUpdateCartButton(Utils.updateButton);
 
-        assertEquals("3", productPage.getCountItem(Utils.countItem));
+        assertEquals(Utils.expectedQuantity, productPage.getCountItem(Utils.countItem));
 
         Thread.sleep(3000);
         stepDef.quitBrowser();

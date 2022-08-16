@@ -32,5 +32,6 @@ public class Utils {
     public static final By quantityBoxInCart = By.xpath("//input[@id='cart-item-218-qty']");
     public static final By updateButton = By.xpath("//button[@id='update-cart-item-218']");
     public static final By countItem = By.xpath("//span[@class='count']");
-
+    public static final String expectedAddSuccess = "You added Breathe-Easy Tank to your shopping cart.";
+    public static final String expectedQuantity = "3";
 }
