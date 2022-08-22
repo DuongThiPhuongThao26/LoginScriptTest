@@ -14,6 +14,7 @@ public class ProductPage extends BasePage {
     }
 
     public void addToCart() {
+        waiForDisplay(Utils.productSize);
         driver.findElement(Utils.productSize).click();
         driver.findElement(Utils.productColor).click();
     }
@@ -27,7 +28,13 @@ public class ProductPage extends BasePage {
     }
 
     public void clickOnUpdateCartButton() {
+        waiForDisplay(Utils.updateCart);
         driver.findElement(Utils.updateCart).click();
+    }
+
+    public void clickUpdateButton() {
+        waiForDisplay(Utils.updateButton);
+        driver.findElement(Utils.updateButton).click();
     }
 
     public void removeProduct() {
@@ -35,14 +42,14 @@ public class ProductPage extends BasePage {
         driver.findElement(Utils.acceptButton).click();
     }
 
-    public void changeQuantityItem(String quantity){
+    public void changeQuantityItem() {
         driver.findElement(Utils.quantityBoxInCart).click();
         driver.findElement(Utils.quantityBoxInCart).clear();
-        basePage.sendKeys(Utils.quantityBoxInCart, quantity);
+        basePage.sendKeys(Utils.quantityBoxInCart, Utils.quantity);
     }
 
-    public String getCountItem(By element){
-        return basePage.getText(element);
+    public String getCountItem(){
+        return basePage.getText(Utils.countItem);
     }
     public String getMessageAddSuccess(By messageAddSuccess) {
         return basePage.getText(messageAddSuccess);
@@ -57,8 +64,4 @@ public class ProductPage extends BasePage {
         return new ViewCartPage(driver);
     }
 
-    public static void main(String[] args) {
-        System.out.println("I rule!");
-        System.out.println("The world");
-    }
 }

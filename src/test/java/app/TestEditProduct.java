@@ -24,11 +24,11 @@ public class TestEditProduct {
         productPage.clickOnCart();
 
         ViewCartPage viewCartPage = productPage.viewAndEditCart();
-        viewCartPage.editItem(Utils.editIcon);
+        viewCartPage.editItem();
 
         productPage.addToCart();
 
-        viewCartPage.editProductQuantity(Utils.quantityBox, Utils.quantity);
+        viewCartPage.editProductQuantity();
         productPage.clickOnUpdateCartButton();
 
         assertEquals(Utils.expectedEditSuccess, viewCartPage.getTextOfMessageUpdateProduct(Utils.updateCartMessage));
@@ -48,14 +48,13 @@ public class TestEditProduct {
         ProductPage productPage = womenPage.clickOnProduct();
         productPage.addToCart();
         productPage.clickOnAddToCartButton();
-
         Thread.sleep(3000);
 
         productPage.clickOnCart();
-        productPage.changeQuantityItem(Utils.quantity);
-        productPage.clickOnUpdateCartButton();
+        productPage.changeQuantityItem();
+        productPage.clickUpdateButton();
 
-        assertEquals(Utils.expectedQuantity, productPage.getCountItem(Utils.countItem));
+        assertEquals(Utils.expectedQuantity, productPage.getCountItem());
 
         Thread.sleep(3000);
         stepDef.quitBrowser();

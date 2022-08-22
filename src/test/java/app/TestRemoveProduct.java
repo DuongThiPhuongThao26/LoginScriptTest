@@ -25,7 +25,7 @@ public class TestRemoveProduct {
         productPage.clickOnCart();
 
         ViewCartPage viewCartPage = productPage.viewAndEditCart();
-        viewCartPage.removeItem(Utils.trashIcon);
+        viewCartPage.removeItem();
         viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage);
 
         assertEquals(Utils.expectedRemoveSuccess, viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage));

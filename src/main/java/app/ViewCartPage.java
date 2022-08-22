@@ -1,5 +1,6 @@
 package app;
 
+import Utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,18 +14,18 @@ public class ViewCartPage extends ProductPage {
         productPage = new ProductPage(this.driver);
     }
 
-    public void removeItem(By trashIcon) {
-        basePage.Click(trashIcon);
+    public void removeItem() {
+        driver.findElement(Utils.trashIcon).click();
     }
 
-    public void editItem(By editIcon) {
-        basePage.Click(editIcon);
+    public void editItem() {
+        driver.findElement(Utils.editIcon).click();
     }
 
-    public void editProductQuantity(By quantityBox, String quantity) {
-        basePage.Click(quantityBox);
-        driver.findElement(quantityBox).clear();
-        basePage.sendKeys(quantityBox, quantity);
+    public void editProductQuantity() {
+        driver.findElement(Utils.quantityBox).click();
+        driver.findElement(Utils.quantityBox).clear();
+        basePage.sendKeys(Utils.quantityBox, Utils.quantity);
     }
 
     public String getTextOfMessageAddProduct(By cartEmpty) {
