@@ -7,15 +7,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class StepDefinition {
-
-    private final ConfigProperties configProperties = new ConfigProperties();
     WebDriver driver;
 
     public void initDriver() {
-
-        WebDriverManager.chromedriver().browserVersion(configProperties.getConfig("ChromeVersion")).setup();
+        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver_win32\\chromedriver.exe");
         this.driver = new ChromeDriver();
-        this.driver.get(configProperties.getConfig("WebUrl"));
+        this.driver.get("https://magento.softwaretestingboard.com/");
         this.driver.manage().window().maximize();
     }
 

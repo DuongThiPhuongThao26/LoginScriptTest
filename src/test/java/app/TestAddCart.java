@@ -20,7 +20,6 @@ public class TestAddCart {
     productPage.addToCart();
     productPage.clickOnAddToCartButton();
 
-
     assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess(Utils.messageAddSuccess));
 
     Thread.sleep(3000);

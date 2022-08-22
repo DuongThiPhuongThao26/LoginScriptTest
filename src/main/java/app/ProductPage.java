@@ -20,6 +20,7 @@ public class ProductPage extends BasePage {
     }
 
     public void clickOnCart() {
+        waiForClickable(Utils.cartIcon);;
         driver.findElement(Utils.cartIcon).click();
     }
 
@@ -42,9 +43,10 @@ public class ProductPage extends BasePage {
         driver.findElement(Utils.acceptButton).click();
     }
 
-    public void changeQuantityItem() {
+    public void changeQuantityItem() throws InterruptedException {
         driver.findElement(Utils.quantityBoxInCart).click();
         driver.findElement(Utils.quantityBoxInCart).clear();
+        Thread.sleep(1000);
         basePage.sendKeys(Utils.quantityBoxInCart, Utils.quantity);
     }
 

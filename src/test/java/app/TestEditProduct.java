@@ -48,7 +48,6 @@ public class TestEditProduct {
         ProductPage productPage = womenPage.clickOnProduct();
         productPage.addToCart();
         productPage.clickOnAddToCartButton();
-        Thread.sleep(3000);
 
         productPage.clickOnCart();
         productPage.changeQuantityItem();
