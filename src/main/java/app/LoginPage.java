@@ -1,5 +1,6 @@
 package app;
 
+import Utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -15,8 +16,8 @@ public class LoginPage extends BasePage {
         basePage = new BasePage(this.driver);
     }
 
-    public void ClickOnSignIn(By linkSignIn) {
-        basePage.Click(linkSignIn);
+    public void ClickOnSignIn() {
+        driver.findElement(Utils.linkSignIn).click();
     }
 
     public void enterEmail(String email, By emailInput) {

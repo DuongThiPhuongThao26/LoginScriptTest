@@ -15,7 +15,7 @@ class testLogin {
         StepDefinition stepDef = new StepDefinition();
         for (int i = 1; i <= 3; i++) {
             stepDef.initDriver();
-            HomePage homePage = stepDef.login(excelUtils.getCellData("Email", i), excelUtils.getCellData("Password", i), Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
+            HomePage homePage = stepDef.login(excelUtils.getCellData("Email", i), excelUtils.getCellData("Password", i), Utils.emailInput, Utils.passwordInput);
             String urlExpected = "https://magento.softwaretestingboard.com/";
             if (urlExpected.equals(homePage.getUrl())){
                 System.out.println("PASSED!");

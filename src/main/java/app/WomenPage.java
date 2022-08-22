@@ -1,5 +1,6 @@
 package app;
 
+import Utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -14,12 +15,12 @@ public class WomenPage extends HomePage {
         homePage = new HomePage(this.driver);
     }
 
-    public void ClickOnCategory(By category) {
-        basePage.Click(category);
+    public void ClickOnCategory() {
+        driver.findElement(Utils.category).click();
     }
 
-    public ProductPage clickOnProduct(By product) {
-        basePage.Click(product);
+    public ProductPage clickOnProduct() {
+        driver.findElement(Utils.product).click();
         return new ProductPage(driver);
     }
 }

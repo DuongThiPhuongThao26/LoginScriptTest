@@ -13,18 +13,18 @@ public class TestRemoveProduct {
     public void removeItemInViewCartPage() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
+        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
-        womenPage.ClickOnCategory(Utils.category);
-        ProductPage productPage = womenPage.clickOnProduct(Utils.product);
-        productPage.addToCart(Utils.productSize, Utils.productColor);
-        productPage.clickOnAddToCartButton(Utils.addCartButton);
+        WomenPage womenPage = homePage.clickOnWomenTab();
+        womenPage.ClickOnCategory();
+        ProductPage productPage = womenPage.clickOnProduct();
+        productPage.addToCart();
+        productPage.clickOnAddToCartButton();
 
         Thread.sleep(3000);
-        productPage.clickOnCart(Utils.cartIcon);
+        productPage.clickOnCart();
 
-        ViewCartPage viewCartPage = productPage.viewAndEditCart(Utils.linkViewCart);
+        ViewCartPage viewCartPage = productPage.viewAndEditCart();
         viewCartPage.removeItem(Utils.trashIcon);
         viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage);
 
@@ -38,18 +38,18 @@ public class TestRemoveProduct {
     public void removeItemInCart() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
+        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
-        womenPage.ClickOnCategory(Utils.category);
-        ProductPage productPage = womenPage.clickOnProduct(Utils.product);
-        productPage.addToCart(Utils.productSize, Utils.productColor);
-        productPage.clickOnAddToCartButton(Utils.addCartButton);
+        WomenPage womenPage = homePage.clickOnWomenTab();
+        womenPage.ClickOnCategory();
+        ProductPage productPage = womenPage.clickOnProduct();
+        productPage.addToCart();
+        productPage.clickOnAddToCartButton();
 
         Thread.sleep(3000);
-        productPage.clickOnCart(Utils.cartIcon);
+        productPage.clickOnCart();
 
-        productPage.removeProduct(Utils.removeIcon, Utils.acceptButton);
+        productPage.removeProduct();
 
         assertEquals(Utils.expectedRemoveSuccess, productPage.getMessageRemoveSuccess(Utils.messageRemoveSuccess));
 

@@ -1,5 +1,6 @@
 package app;
 
+import Utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -18,8 +19,8 @@ public class HomePage extends BasePage {
         return driver.getCurrentUrl();
     }
 
-    public WomenPage clickOnWomenTab(By womenTab) {
-        basePage.Click(womenTab);
+    public WomenPage clickOnWomenTab() {
+        driver.findElement(Utils.womenTab).click();
         return new WomenPage(driver);
     }
 }

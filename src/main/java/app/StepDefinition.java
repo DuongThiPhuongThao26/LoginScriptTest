@@ -23,9 +23,9 @@ public class StepDefinition {
         driver.quit();
     }
 
-    public HomePage login(String email, String pwd, By linkSignIn, By emailInput, By passwordInput) {
+    public HomePage login(String email, String pwd, By emailInput, By passwordInput) {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.ClickOnSignIn(linkSignIn);
+        loginPage.ClickOnSignIn();
         loginPage.enterEmail(email, emailInput);
         loginPage.enterPassword(pwd, passwordInput);
         loginPage.clickButton();

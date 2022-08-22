@@ -12,13 +12,13 @@ public class TestAddCart {
   public void testAddToCart() throws InterruptedException {
     StepDefinition stepDef = new StepDefinition();
     stepDef.initDriver();
-    HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
+    HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
-    WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
-    womenPage.ClickOnCategory(Utils.category);
-    ProductPage productPage = womenPage.clickOnProduct(Utils.product);
-    productPage.addToCart(Utils.productSize, Utils.productColor);
-    productPage.clickOnAddToCartButton(Utils.addCartButton);
+    WomenPage womenPage = homePage.clickOnWomenTab();
+    womenPage.ClickOnCategory();
+    ProductPage productPage = womenPage.clickOnProduct();
+    productPage.addToCart();
+    productPage.clickOnAddToCartButton();
 
 
     assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess(Utils.messageAddSuccess));

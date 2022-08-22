@@ -21,11 +21,6 @@ public class BasePage {
         wait.until(ExpectedConditions.visibilityOfElementLocated(element));
     }
 
-    public void Click(By element) {
-        waiForDisplay(element);
-        driver.findElement(element).click();
-    }
-
     public void sendKeys(By element, String text) {
         waiForDisplay(element);
         driver.findElement(element).sendKeys(text);
@@ -33,11 +28,6 @@ public class BasePage {
     public String getText(By element){
         waiForDisplay(element);
         return driver.findElement(element).getText();
-    }
-
-    public void clear(By element){
-        waiForDisplay(element);
-        driver.findElement(element).clear();
     }
 
 }

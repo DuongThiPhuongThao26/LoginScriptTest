@@ -13,23 +13,23 @@ public class TestEditProduct {
     public void editItemInViewCart() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
+        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
-        womenPage.ClickOnCategory(Utils.category);
-        ProductPage productPage = womenPage.clickOnProduct(Utils.product);
-        productPage.addToCart(Utils.productSize, Utils.productColor);
-        productPage.clickOnAddToCartButton(Utils.addCartButton);
+        WomenPage womenPage = homePage.clickOnWomenTab();
+        womenPage.ClickOnCategory();
+        ProductPage productPage = womenPage.clickOnProduct();
+        productPage.addToCart();
+        productPage.clickOnAddToCartButton();
         Thread.sleep(3000);
-        productPage.clickOnCart(Utils.cartIcon);
+        productPage.clickOnCart();
 
-        ViewCartPage viewCartPage = productPage.viewAndEditCart(Utils.linkViewCart);
+        ViewCartPage viewCartPage = productPage.viewAndEditCart();
         viewCartPage.editItem(Utils.editIcon);
 
-        productPage.addToCart(Utils.productSize, Utils.productColor);
+        productPage.addToCart();
 
         viewCartPage.editProductQuantity(Utils.quantityBox, Utils.quantity);
-        productPage.clickOnUpdateCartButton(Utils.updateCart);
+        productPage.clickOnUpdateCartButton();
 
         assertEquals(Utils.expectedEditSuccess, viewCartPage.getTextOfMessageUpdateProduct(Utils.updateCartMessage));
 
@@ -41,19 +41,19 @@ public class TestEditProduct {
     public void editItemInCart() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.linkSignIn, Utils.emailInput, Utils.passwordInput);
+        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
-        WomenPage womenPage = homePage.clickOnWomenTab(Utils.womenTab);
-        womenPage.ClickOnCategory(Utils.category);
-        ProductPage productPage = womenPage.clickOnProduct(Utils.product);
-        productPage.addToCart(Utils.productSize, Utils.productColor);
-        productPage.clickOnAddToCartButton(Utils.addCartButton);
+        WomenPage womenPage = homePage.clickOnWomenTab();
+        womenPage.ClickOnCategory();
+        ProductPage productPage = womenPage.clickOnProduct();
+        productPage.addToCart();
+        productPage.clickOnAddToCartButton();
 
         Thread.sleep(3000);
 
-        productPage.clickOnCart(Utils.cartIcon);
-        productPage.changeQuantityItem(Utils.quantityBoxInCart, Utils.quantity);
-        productPage.clickOnUpdateCartButton(Utils.updateButton);
+        productPage.clickOnCart();
+        productPage.changeQuantityItem(Utils.quantity);
+        productPage.clickOnUpdateCartButton();
 
         assertEquals(Utils.expectedQuantity, productPage.getCountItem(Utils.countItem));
 
