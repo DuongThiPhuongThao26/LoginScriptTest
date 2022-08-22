@@ -9,11 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestRemoveProduct {
+    HomePage homePage;
     @Test
     public void removeItemInViewCartPage() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
+        stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
         WomenPage womenPage = homePage.clickOnWomenTab();
         womenPage.ClickOnCategory();
@@ -38,7 +39,7 @@ public class TestRemoveProduct {
     public void removeItemInCart() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
+        stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
         WomenPage womenPage = homePage.clickOnWomenTab();
         womenPage.ClickOnCategory();

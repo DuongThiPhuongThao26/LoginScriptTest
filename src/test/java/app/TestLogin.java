@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
-public class TestAddCart {
+public class TestLogin {
     private static ChromeDriver driver;
     HomePage homePage;
 
@@ -23,21 +23,16 @@ public class TestAddCart {
     }
 
     @Test
-    public void testAddToCart() {
+    public void testSignIn() {
         StepDefinition stepDef = new StepDefinition();
         stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
-
-        WomenPage womenPage = homePage.clickOnWomenTab();
-        womenPage.ClickOnCategory();
-        ProductPage productPage = womenPage.clickOnProduct();
-        productPage.addToCart();
-        productPage.clickOnAddToCartButton();
-
-        assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess(Utils.messageAddSuccess));
+        homePage = new HomePage(driver);
+        assertEquals(Utils.urlExpected, homePage.getUrl());
     }
 
     @AfterClass
     public static void closeBrowser() {
         driver.quit();
     }
+
 }

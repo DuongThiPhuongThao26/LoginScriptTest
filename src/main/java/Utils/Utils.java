@@ -34,4 +34,5 @@ public class Utils {
     public static final By countItem = By.xpath("//div[@class = 'items-total']//span[@class = 'count']");
     public static final String expectedAddSuccess = "You added Breathe-Easy Tank to your shopping cart.";
     public static final String expectedQuantity = "3";
+    public static final String urlExpected = "https://magento.softwaretestingboard.com/";
 }

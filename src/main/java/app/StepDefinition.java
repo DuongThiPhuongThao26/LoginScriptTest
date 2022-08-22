@@ -20,12 +20,11 @@ public class StepDefinition {
         driver.quit();
     }
 
-    public HomePage login(String email, String pwd, By emailInput, By passwordInput) {
+    public void login(String email, String pwd, By emailInput, By passwordInput) {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.ClickOnSignIn();
         loginPage.enterEmail(email, emailInput);
         loginPage.enterPassword(pwd, passwordInput);
         loginPage.clickButton();
-        return new HomePage(driver);
     }
 }

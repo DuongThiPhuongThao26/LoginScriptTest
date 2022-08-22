@@ -8,12 +8,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestEditProduct {
-
+    HomePage homePage;
     @Test
     public void editItemInViewCart() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
+        stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
         WomenPage womenPage = homePage.clickOnWomenTab();
         womenPage.ClickOnCategory();
@@ -41,13 +41,14 @@ public class TestEditProduct {
     public void editItemInCart() throws InterruptedException {
         StepDefinition stepDef = new StepDefinition();
         stepDef.initDriver();
-        HomePage homePage = stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
+        stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
 
         WomenPage womenPage = homePage.clickOnWomenTab();
         womenPage.ClickOnCategory();
         ProductPage productPage = womenPage.clickOnProduct();
         productPage.addToCart();
         productPage.clickOnAddToCartButton();
+        Thread.sleep(3000);
 
         productPage.clickOnCart();
         productPage.changeQuantityItem();

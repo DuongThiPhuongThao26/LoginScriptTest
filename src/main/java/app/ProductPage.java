@@ -46,7 +46,6 @@ public class ProductPage extends BasePage {
     public void changeQuantityItem() throws InterruptedException {
         driver.findElement(Utils.quantityBoxInCart).click();
         driver.findElement(Utils.quantityBoxInCart).clear();
-        Thread.sleep(1000);
         basePage.sendKeys(Utils.quantityBoxInCart, Utils.quantity);
     }
 
