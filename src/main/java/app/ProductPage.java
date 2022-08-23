@@ -12,10 +12,10 @@ public class ProductPage extends BasePage {
     public static final By cartIcon = By.xpath("//div[@data-block='minicart']");
     public static final By addCartButton = By.xpath("//span[normalize-space()='Add to Cart']");
     public static final By updateCart = By.xpath("//button[@title='Update Cart']");
-    public static final By updateButton = By.xpath("//div[@class='details-qty qty']//button[@id='update-cart-item-1237']");
+    public static final By updateButton = By.xpath("//div[@class='details-qty qty']//button[@title='Update']");
     public static final By removeIcon = By.xpath("//a[@title='Remove item']");
     public static final By acceptButton = By.xpath("//button[@class='action-primary action-accept']");
-    public static final By quantityBoxInCart = By.xpath("//div[@class='details-qty qty']//input[@id='cart-item-1237-qty']");
+    public static final By quantityBoxInCart = By.xpath("//div[@class='details-qty qty']//input[@class='item-qty cart-item-qty']");
     public static final By countItem = By.xpath("//div[@class = 'items-total']//span[@class = 'count']");
     public static final By linkViewCart = By.xpath("//span[normalize-space()='View and Edit Cart']");
 
