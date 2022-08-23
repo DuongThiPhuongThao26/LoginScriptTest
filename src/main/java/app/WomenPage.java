@@ -1,6 +1,5 @@
 package app;
 
-import Utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -9,6 +8,9 @@ public class WomenPage extends HomePage {
     WebDriver driver;
     HomePage homePage;
 
+    public static final By category = By.xpath("//a[contains(text(),'Tops')]");
+    public static final By product = By.xpath("//a[@class='product photo product-item-photo']//img[@alt='Breathe-Easy Tank']");
+
     public WomenPage(WebDriver driver) {
         super(driver);
         this.driver = driver;
@@ -16,11 +18,10 @@ public class WomenPage extends HomePage {
     }
 
     public void ClickOnCategory() {
-        driver.findElement(Utils.category).click();
+        driver.findElement(category).click();
     }
 
-    public ProductPage clickOnProduct() {
-        driver.findElement(Utils.product).click();
-        return new ProductPage(driver);
+    public void clickOnProduct() {
+        driver.findElement(product).click();
     }
 }

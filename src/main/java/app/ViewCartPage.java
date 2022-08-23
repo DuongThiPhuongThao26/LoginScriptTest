@@ -1,12 +1,15 @@
 package app;
 
-import Utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ViewCartPage extends ProductPage {
     WebDriver driver;
     ProductPage productPage;
+
+    public static final By trashIcon = By.xpath("//a[@class='action action-delete']");
+    public static final By editIcon = By.xpath("//a[@title='Edit item parameters']");
+    public static final By quantityBox = By.xpath("//input[@id='qty']");
 
     public ViewCartPage(WebDriver driver) {
         super(driver);
@@ -15,17 +18,17 @@ public class ViewCartPage extends ProductPage {
     }
 
     public void removeItem() {
-        driver.findElement(Utils.trashIcon).click();
+        driver.findElement(trashIcon).click();
     }
 
     public void editItem() {
-        driver.findElement(Utils.editIcon).click();
+        driver.findElement(editIcon).click();
     }
 
-    public void editProductQuantity() {
-        driver.findElement(Utils.quantityBox).click();
-        driver.findElement(Utils.quantityBox).clear();
-        basePage.sendKeys(Utils.quantityBox, Utils.quantity);
+    public void editProductQuantity(String quantity) {
+        driver.findElement(quantityBox).click();
+        driver.findElement(quantityBox).clear();
+        basePage.sendKeys(quantityBox, quantity);
     }
 
     public String getTextOfMessageAddProduct(By cartEmpty) {

@@ -1,18 +1,18 @@
 package app;
 
 import Utils.Utils;
-import org.junit.AfterClass;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestAddCart {
-    private static ChromeDriver driver;
-    HomePage homePage;
+    private static WebDriver driver;
 
     @Before
     public void openBrowser() {
@@ -24,20 +24,25 @@ public class TestAddCart {
 
     @Test
     public void testAddToCart() {
-        StepDefinition stepDef = new StepDefinition();
-        stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(Utils.email, Utils.pwd);
 
-        WomenPage womenPage = homePage.clickOnWomenTab();
+        HomePage homePage = new HomePage(driver);
+        homePage.clickOnWomenTab();
+
+        WomenPage womenPage = new WomenPage(driver);
         womenPage.ClickOnCategory();
-        ProductPage productPage = womenPage.clickOnProduct();
+        womenPage.clickOnProduct();
+
+        ProductPage productPage = new ProductPage(driver);
         productPage.addToCart();
         productPage.clickOnAddToCartButton();
 
         assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess(Utils.messageAddSuccess));
     }
 
-    @AfterClass
-    public static void closeBrowser() {
+    @After
+    public void closeBrowser() {
         driver.quit();
     }
 }

@@ -1,18 +1,17 @@
 package app;
 
 import Utils.Utils;
-import org.junit.AfterClass;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestLogin {
-    private static ChromeDriver driver;
-    HomePage homePage;
+    private static WebDriver driver;
 
     @Before
     public void openBrowser() {
@@ -24,14 +23,14 @@ public class TestLogin {
 
     @Test
     public void testSignIn() {
-        StepDefinition stepDef = new StepDefinition();
-        stepDef.login(Utils.email, Utils.pwd, Utils.emailInput, Utils.passwordInput);
-        homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login(Utils.email, Utils.pwd);
+        HomePage homePage = new HomePage(driver);
         assertEquals(Utils.urlExpected, homePage.getUrl());
     }
 
-    @AfterClass
-    public static void closeBrowser() {
+    @After
+    public void closeBrowser() {
         driver.quit();
     }
 

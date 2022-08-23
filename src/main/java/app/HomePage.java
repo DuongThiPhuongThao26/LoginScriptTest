@@ -1,6 +1,5 @@
 package app;
 
-import Utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -8,6 +7,8 @@ public class HomePage extends BasePage {
 
     WebDriver driver;
     BasePage basePage;
+
+    public static final By womenTab = By.xpath("//span[normalize-space()='Women']");
 
     public HomePage(WebDriver driver) {
         super(driver);
@@ -19,8 +20,7 @@ public class HomePage extends BasePage {
         return driver.getCurrentUrl();
     }
 
-    public WomenPage clickOnWomenTab() {
-        driver.findElement(Utils.womenTab).click();
-        return new WomenPage(driver);
+    public void clickOnWomenTab() {
+        driver.findElement(womenTab).click();
     }
 }

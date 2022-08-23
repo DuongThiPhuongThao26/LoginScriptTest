@@ -1,11 +1,23 @@
 package app;
-import Utils.Utils;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ProductPage extends BasePage {
     WebDriver driver;
     BasePage basePage;
+
+    public static final By productSize = By.xpath("//div[contains(@option-label,'M')]");
+    public static final By productColor = By.xpath("//div[contains(@aria-label,'White')]");
+    public static final By cartIcon = By.xpath("//div[@data-block='minicart']");
+    public static final By addCartButton = By.xpath("//span[normalize-space()='Add to Cart']");
+    public static final By updateCart = By.xpath("//button[@title='Update Cart']");
+    public static final By updateButton = By.xpath("//div[@class='details-qty qty']//button[@id='update-cart-item-1237']");
+    public static final By removeIcon = By.xpath("//a[@title='Remove item']");
+    public static final By acceptButton = By.xpath("//button[@class='action-primary action-accept']");
+    public static final By quantityBoxInCart = By.xpath("//div[@class='details-qty qty']//input[@id='cart-item-1237-qty']");
+    public static final By countItem = By.xpath("//div[@class = 'items-total']//span[@class = 'count']");
+    public static final By linkViewCart = By.xpath("//span[normalize-space()='View and Edit Cart']");
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -14,44 +26,47 @@ public class ProductPage extends BasePage {
     }
 
     public void addToCart() {
-        waiForDisplay(Utils.productSize);
-        driver.findElement(Utils.productSize).click();
-        driver.findElement(Utils.productColor).click();
+        waiForDisplay(productSize);
+        driver.findElement(productSize).click();
+        driver.findElement(productColor).click();
     }
 
     public void clickOnCart() {
-        waiForClickable(Utils.cartIcon);;
-        driver.findElement(Utils.cartIcon).click();
+        waiForClickable(cartIcon);
+        ;
+        driver.findElement(cartIcon).click();
     }
 
     public void clickOnAddToCartButton() {
-        driver.findElement(Utils.addCartButton).click();
+        driver.findElement(addCartButton).click();
     }
 
     public void clickOnUpdateCartButton() {
-        waiForDisplay(Utils.updateCart);
-        driver.findElement(Utils.updateCart).click();
+        waiForDisplay(updateCart);
+        driver.findElement(updateCart).click();
     }
 
     public void clickUpdateButton() {
-        waiForDisplay(Utils.updateButton);
-        driver.findElement(Utils.updateButton).click();
+        waiForClickable(updateButton);
+        driver.findElement(updateButton).click();
     }
 
     public void removeProduct() {
-        driver.findElement(Utils.removeIcon).click();
-        driver.findElement(Utils.acceptButton).click();
+        driver.findElement(removeIcon).click();
+        waiForClickable(acceptButton);
+        driver.findElement(acceptButton).click();
     }
 
-    public void changeQuantityItem() throws InterruptedException {
-        driver.findElement(Utils.quantityBoxInCart).click();
-        driver.findElement(Utils.quantityBoxInCart).clear();
-        basePage.sendKeys(Utils.quantityBoxInCart, Utils.quantity);
+    public void changeQuantityItem(String quantity) {
+        driver.findElement(quantityBoxInCart).click();
+        driver.findElement(quantityBoxInCart).clear();
+        basePage.sendKeys(quantityBoxInCart, quantity);
     }
 
-    public String getCountItem(){
-        return basePage.getText(Utils.countItem);
+    public String getCountItem() {
+        return basePage.getText(countItem);
     }
+
     public String getMessageAddSuccess(By messageAddSuccess) {
         return basePage.getText(messageAddSuccess);
     }
@@ -60,9 +75,8 @@ public class ProductPage extends BasePage {
         return basePage.getText(messageRemoveSuccess);
     }
 
-    public ViewCartPage viewAndEditCart() {
-        driver.findElement(Utils.linkViewCart).click();
-        return new ViewCartPage(driver);
+    public void viewAndEditCart() {
+        driver.findElement(linkViewCart).click();
     }
 
 }
