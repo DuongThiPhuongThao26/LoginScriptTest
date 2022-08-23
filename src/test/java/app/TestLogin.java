@@ -11,15 +11,18 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestLogin {
-    private static WebDriver driver;
+    WebDriver driver;
 
     @Before
     public void openBrowser() {
-        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://magento.softwaretestingboard.com/");
-        driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
+//        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver_win32\\chromedriver.exe");
+//        driver = new ChromeDriver();
+//        driver.get("https://magento.softwaretestingboard.com/");
+//        driver.manage().window().maximize();
+//        driver.manage().deleteAllCookies();
+
+        BasePage basePage = new BasePage(driver);
+        basePage.initDriver();
     }
 
     @Test
