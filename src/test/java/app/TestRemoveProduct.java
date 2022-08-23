@@ -20,6 +20,7 @@ public class TestRemoveProduct {
         driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
     }
 
     @Test

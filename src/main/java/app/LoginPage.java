@@ -25,11 +25,11 @@ public class LoginPage extends BasePage {
     }
 
     public void enterEmail(String email, By emailInput) {
-        basePage.sendKeys(emailInput, email);
+        driver.findElement(emailInput).sendKeys(email);
     }
 
     public void enterPassword(String pwd, By passwordInput) {
-        basePage.sendKeys(passwordInput, pwd);
+        driver.findElement(passwordInput).sendKeys(pwd);
     }
 
     public void clickButton() {

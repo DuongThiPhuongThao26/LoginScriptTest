@@ -28,15 +28,16 @@ public class ViewCartPage extends ProductPage {
     public void editProductQuantity(String quantity) {
         driver.findElement(quantityBox).click();
         driver.findElement(quantityBox).clear();
-        basePage.sendKeys(quantityBox, quantity);
+        driver.findElement(quantityBox).sendKeys(quantity);
     }
 
     public String getTextOfMessageAddProduct(By cartEmpty) {
-        return basePage.getText(cartEmpty);
+        return driver.findElement(cartEmpty).getText();
     }
 
     public String getTextOfMessageUpdateProduct(By updateCartMessage) {
-        return basePage.getText(updateCartMessage);
+        waiForDisplay(updateCartMessage);
+        return driver.findElement(updateCartMessage).getText();
     }
 
 }

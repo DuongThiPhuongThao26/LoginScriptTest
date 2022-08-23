@@ -20,6 +20,7 @@ public class TestAddCart {
         driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
     }
 
     @Test

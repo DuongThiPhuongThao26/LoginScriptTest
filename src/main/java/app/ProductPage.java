@@ -57,22 +57,26 @@ public class ProductPage extends BasePage {
         driver.findElement(acceptButton).click();
     }
 
-    public void changeQuantityItem(String quantity) {
+    public void editQuantity(String quantity) throws InterruptedException {
+        waiForClickable(quantityBoxInCart);
         driver.findElement(quantityBoxInCart).click();
+
+        Thread.sleep(3000);
         driver.findElement(quantityBoxInCart).clear();
-        basePage.sendKeys(quantityBoxInCart, quantity);
+        driver.findElement(quantityBoxInCart).sendKeys(quantity);
     }
 
     public String getCountItem() {
-        return basePage.getText(countItem);
+        return driver.findElement(countItem).getText();
     }
 
     public String getMessageAddSuccess(By messageAddSuccess) {
-        return basePage.getText(messageAddSuccess);
+        waiForDisplay(messageAddSuccess);
+        return driver.findElement(messageAddSuccess).getText();
     }
 
     public String getMessageRemoveSuccess(By messageRemoveSuccess) {
-        return basePage.getText(messageRemoveSuccess);
+        return driver.findElement(messageRemoveSuccess).getText();
     }
 
     public void viewAndEditCart() {

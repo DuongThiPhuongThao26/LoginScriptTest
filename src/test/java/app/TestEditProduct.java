@@ -13,10 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("JUNIT5")
 public class TestEditProduct {
     private static WebDriver driver;
-    HomePage homePage;
-    WomenPage womenPage;
-    ProductPage productPage;
-    ViewCartPage viewCartPage;
 
     @Before
     public void openBrowser() {
@@ -24,6 +20,7 @@ public class TestEditProduct {
         driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
     }
 
     @Test
@@ -75,8 +72,10 @@ public class TestEditProduct {
         Thread.sleep(3000);
 
         productPage.clickOnCart();
-        productPage.changeQuantityItem(Utils.quantity);
+        productPage.editQuantity(Utils.quantity);
         productPage.clickUpdateButton();
+
+        Thread.sleep(2000);
 
         assertEquals(Utils.expectedQuantity, productPage.getCountItem());
     }

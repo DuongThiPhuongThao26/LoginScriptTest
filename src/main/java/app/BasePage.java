@@ -33,15 +33,4 @@ public class BasePage {
     public void waiForClickable(By element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
-
-    public void sendKeys(By element, String text) {
-        waiForDisplay(element);
-        driver.findElement(element).sendKeys(text);
-    }
-
-    public String getText(By element) {
-        waiForDisplay(element);
-        return driver.findElement(element).getText();
-    }
-
 }
