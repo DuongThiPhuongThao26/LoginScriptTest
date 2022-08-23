@@ -1,6 +1,7 @@
 package app;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 
 public class ProductPage extends BasePage {
@@ -57,12 +58,10 @@ public class ProductPage extends BasePage {
         driver.findElement(acceptButton).click();
     }
 
-    public void editQuantity(String quantity) throws InterruptedException {
+    public void editQuantity(String quantity){
         waiForClickable(quantityBoxInCart);
         driver.findElement(quantityBoxInCart).click();
-
-        Thread.sleep(3000);
-        driver.findElement(quantityBoxInCart).clear();
+        driver.findElement(quantityBoxInCart).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
         driver.findElement(quantityBoxInCart).sendKeys(quantity);
     }
 
