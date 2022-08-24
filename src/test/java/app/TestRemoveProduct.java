@@ -1,29 +1,19 @@
 package app;
 
 import Utils.Utils;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
-public class TestRemoveProduct {
+public class TestRemoveProduct extends BaseTest{
     private static WebDriver driver;
 
     @Before
-    public void openBrowser() {
-        System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver_win32\\chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("https://magento.softwaretestingboard.com/");
-        driver.manage().window().maximize();
-    }
-
-    @Test
-    public void removeItemInViewCartPage() throws InterruptedException {
+    public void navigateToProductPage(){
+        driver = getDriver();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(Utils.email, Utils.pwd);
 
@@ -33,9 +23,12 @@ public class TestRemoveProduct {
         WomenPage womenPage = new WomenPage(driver);
         womenPage.ClickOnCategory();
         womenPage.clickOnProduct();
+    }
 
+    @Test
+    public void removeItemInViewCartPage() throws InterruptedException {
         ProductPage productPage = new ProductPage(driver);
-        productPage.addToCart();
+        productPage.productSelection();
         productPage.clickOnAddToCartButton();
 
         Thread.sleep(3000);
@@ -52,18 +45,8 @@ public class TestRemoveProduct {
 
     @Test
     public void removeItemInCart() throws InterruptedException {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(Utils.email, Utils.pwd);
-
-        HomePage homePage = new HomePage(driver);
-        homePage.clickOnWomenTab();
-
-        WomenPage womenPage = new WomenPage(driver);
-        womenPage.ClickOnCategory();
-        womenPage.clickOnProduct();
-
         ProductPage productPage = new ProductPage(driver);
-        productPage.addToCart();
+        productPage.productSelection();
         productPage.clickOnAddToCartButton();
 
         Thread.sleep(3000);
@@ -72,11 +55,5 @@ public class TestRemoveProduct {
         productPage.removeProduct();
 
         assertEquals(Utils.expectedRemoveSuccess, productPage.getMessageRemoveSuccess());
-    }
-
-    @After
-    public void closeBrowser() throws InterruptedException {
-        Thread.sleep(2000);
-        driver.quit();
     }
 }

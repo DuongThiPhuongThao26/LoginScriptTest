@@ -3,7 +3,6 @@ package app;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
 public class ProductPage extends BasePage {
     WebDriver driver;
     BasePage basePage;
@@ -28,7 +27,7 @@ public class ProductPage extends BasePage {
         basePage = new BasePage(this.driver);
     }
 
-    public void addToCart() {
+    public void productSelection() {
         waiForDisplay(productSize);
         driver.findElement(productSize).click();
         driver.findElement(productColor).click();
@@ -41,6 +40,7 @@ public class ProductPage extends BasePage {
     }
 
     public void clickOnAddToCartButton() {
+        waiForClickable(addCartButton);
         driver.findElement(addCartButton).click();
     }
 
