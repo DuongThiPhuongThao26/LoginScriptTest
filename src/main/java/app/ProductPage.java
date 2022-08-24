@@ -19,6 +19,8 @@ public class ProductPage extends BasePage {
     public static final By quantityBoxInCart = By.xpath("//div[@class='details-qty qty']//input[@class='item-qty cart-item-qty']");
     public static final By countItem = By.xpath("//div[@class = 'items-total']//span[@class = 'count']");
     public static final By linkViewCart = By.xpath("//span[normalize-space()='View and Edit Cart']");
+    public static final By messageAddSuccess = By.xpath("//div[contains(@data-bind,'html: $parent.prepareMessageForHtml(message.text)')]");
+    public static final By messageRemoveSuccess = By.xpath("//div[@class='block-content']//strong[@class='subtitle empty']");
 
     public ProductPage(WebDriver driver) {
         super(driver);
@@ -58,10 +60,10 @@ public class ProductPage extends BasePage {
         driver.findElement(acceptButton).click();
     }
 
-    public void editQuantity(String quantity){
+    public void editQuantity(String quantity) {
         waiForClickable(quantityBoxInCart);
         driver.findElement(quantityBoxInCart).click();
-        driver.findElement(quantityBoxInCart).sendKeys(Keys.chord(Keys.CONTROL,"a", Keys.DELETE));
+        driver.findElement(quantityBoxInCart).sendKeys(Keys.chord(Keys.CONTROL, "a", Keys.DELETE));
         driver.findElement(quantityBoxInCart).sendKeys(quantity);
     }
 
@@ -69,12 +71,13 @@ public class ProductPage extends BasePage {
         return driver.findElement(countItem).getText();
     }
 
-    public String getMessageAddSuccess(By messageAddSuccess) {
+    public String getMessageAddSuccess() {
         waiForDisplay(messageAddSuccess);
         return driver.findElement(messageAddSuccess).getText();
     }
 
-    public String getMessageRemoveSuccess(By messageRemoveSuccess) {
+    public String getMessageRemoveSuccess() {
+        waiForClickable(messageRemoveSuccess);
         return driver.findElement(messageRemoveSuccess).getText();
     }
 

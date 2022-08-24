@@ -20,7 +20,6 @@ public class TestRemoveProduct {
         driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
     }
 
     @Test
@@ -46,9 +45,9 @@ public class TestRemoveProduct {
 
         ViewCartPage viewCartPage = new ViewCartPage(driver);
         viewCartPage.removeItem();
-        viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage);
+        viewCartPage.getTextOfMessageAddProduct();
 
-        assertEquals(Utils.expectedRemoveSuccess, viewCartPage.getTextOfMessageAddProduct(Utils.cartEmptyMessage));
+        assertEquals(Utils.expectedRemoveSuccess, viewCartPage.getTextOfMessageAddProduct());
     }
 
     @Test
@@ -72,11 +71,12 @@ public class TestRemoveProduct {
         productPage.clickOnCart();
         productPage.removeProduct();
 
-        assertEquals(Utils.expectedRemoveSuccess, productPage.getMessageRemoveSuccess(Utils.messageRemoveSuccess));
+        assertEquals(Utils.expectedRemoveSuccess, productPage.getMessageRemoveSuccess());
     }
 
     @After
-    public void closeBrowser() {
+    public void closeBrowser() throws InterruptedException {
+        Thread.sleep(2000);
         driver.quit();
     }
 }

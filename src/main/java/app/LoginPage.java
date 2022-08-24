@@ -11,7 +11,9 @@ public class LoginPage extends BasePage {
 
     public static final By linkSignIn = By.xpath("//div[@class='panel header']//a[contains(text(),'Sign In')]");
     public static final By emailInput = By.xpath("//input[@id='email']");
-    public static final By passwordInput = By.xpath("//fieldset[@class='fieldset login']//input[@id='pass']");
+    public static final By passwordInput = By.xpath("//div[@class='control']//input[@title='Password']");
+    public static final By signInButton = By.xpath("//div[@class='primary']//button[@class='action login primary']");
+
 
     public LoginPage(WebDriver driver) {
         super(driver);
@@ -19,27 +21,26 @@ public class LoginPage extends BasePage {
         basePage = new BasePage(this.driver);
     }
 
-    public void ClickOnSignIn() {
+    public void clickOnSignIn() {
         driver.findElement(linkSignIn).click();
     }
 
-    public void enterEmail(String email, By emailInput) {
+    public void enterEmail(By emailInput, String email) {
         driver.findElement(emailInput).sendKeys(email);
     }
 
-    public void enterPassword(String pwd, By passwordInput) {
+    public void enterPassword(By passwordInput, String pwd) {
         driver.findElement(passwordInput).sendKeys(pwd);
     }
 
     public void clickButton() {
-        Actions action = new Actions(driver);
-        action.sendKeys(Keys.ENTER).build().perform();
+        driver.findElement(signInButton).click();
     }
 
     public void login(String email, String pwd) {
-        ClickOnSignIn();
-        enterEmail(email, emailInput);
-        enterPassword(pwd, passwordInput);
+        clickOnSignIn();
+        enterEmail(emailInput, email);
+        enterPassword(passwordInput, pwd);
         clickButton();
     }
 }

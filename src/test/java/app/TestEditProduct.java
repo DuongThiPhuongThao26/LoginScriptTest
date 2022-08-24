@@ -20,7 +20,6 @@ public class TestEditProduct {
         driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
     }
 
     @Test
@@ -50,7 +49,7 @@ public class TestEditProduct {
         viewCartPage.editProductQuantity(Utils.quantity);
         productPage.clickOnUpdateCartButton();
 
-        assertEquals(Utils.expectedEditSuccess, viewCartPage.getTextOfMessageUpdateProduct(Utils.updateCartMessage));
+        assertEquals(Utils.expectedEditSuccess, viewCartPage.getTextOfMessageUpdateProduct());
     }
 
     @Test

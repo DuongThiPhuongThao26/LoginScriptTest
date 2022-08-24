@@ -13,14 +13,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @DisplayName("JUNIT5")
 public class TestAddCart {
     private static WebDriver driver;
-
     @Before
     public void openBrowser() {
         System.setProperty("webdriver.chrome.driver", "D:\\chromedriver\\chromedriver_win32\\chromedriver.exe");
         driver = new ChromeDriver();
         driver.get("https://magento.softwaretestingboard.com/");
         driver.manage().window().maximize();
-        driver.manage().deleteAllCookies();
     }
 
     @Test
@@ -39,11 +37,12 @@ public class TestAddCart {
         productPage.addToCart();
         productPage.clickOnAddToCartButton();
 
-        assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess(Utils.messageAddSuccess));
+        assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess());
     }
 
     @After
-    public void closeBrowser() {
+    public void closeBrowser() throws InterruptedException {
+        Thread.sleep(2000);
         driver.quit();
     }
 }
