@@ -5,31 +5,15 @@ import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-
-public class BaseTest {
-    private static WebDriver driver;
-
-    public static WebDriver getDriver() {
-        return driver;
-    }
-
-    static String driverPath = "src/test/resources/drivers/chromedriver.exe";
-
-    public static WebDriver initChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", driverPath);
-        driver = new ChromeDriver();
-        driver.get("https://magento.softwaretestingboard.com/");
-        driver.manage().window().maximize();
-        return driver;
-    }
+public class BaseTest{
+    protected static WebDriver driver;
 
     @Before
-    public void initializeTestBaseSetup() {
-        initChromeDriver();
+    public void initChromeDriver() {
+        System.setProperty("webdriver.chrome.driver", "./src/test/resources/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.get(ReadProperties.getInstance().getProperty("URL"));
+        driver.manage().window().maximize();
     }
 
     @After

@@ -1,19 +1,13 @@
 package app;
 
 import Utils.Utils;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.openqa.selenium.WebDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestEditProduct extends BaseTest {
-    private static WebDriver driver;
-
-    @Before
     public void navigateToProductPage() {
-        driver = getDriver();
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(Utils.email, Utils.pwd);
 
@@ -27,6 +21,7 @@ public class TestEditProduct extends BaseTest {
 
     @Test
     public void editItemInViewCart() throws InterruptedException {
+        navigateToProductPage();
         ProductPage productPage = new ProductPage(driver);
         productPage.productSelection();
         productPage.clickOnAddToCartButton();
@@ -47,6 +42,7 @@ public class TestEditProduct extends BaseTest {
 
     @Test
     public void editItemInCart() throws InterruptedException {
+        navigateToProductPage();
         ProductPage productPage = new ProductPage(driver);
         productPage.productSelection();
         productPage.clickOnAddToCartButton();

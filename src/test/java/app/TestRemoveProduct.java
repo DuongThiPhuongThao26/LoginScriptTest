@@ -1,19 +1,13 @@
 package app;
 
 import Utils.Utils;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.openqa.selenium.WebDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestRemoveProduct extends BaseTest{
-    private static WebDriver driver;
-
-    @Before
-    public void navigateToProductPage(){
-        driver = getDriver();
+    public void navigateToProductPage() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(Utils.email, Utils.pwd);
 
@@ -27,6 +21,7 @@ public class TestRemoveProduct extends BaseTest{
 
     @Test
     public void removeItemInViewCartPage() throws InterruptedException {
+        navigateToProductPage();
         ProductPage productPage = new ProductPage(driver);
         productPage.productSelection();
         productPage.clickOnAddToCartButton();
@@ -45,6 +40,7 @@ public class TestRemoveProduct extends BaseTest{
 
     @Test
     public void removeItemInCart() throws InterruptedException {
+        navigateToProductPage();
         ProductPage productPage = new ProductPage(driver);
         productPage.productSelection();
         productPage.clickOnAddToCartButton();

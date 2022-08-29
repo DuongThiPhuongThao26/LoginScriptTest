@@ -1,7 +1,6 @@
 package app;
 
 import Utils.Utils;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.WebDriver;
@@ -9,13 +8,8 @@ import org.openqa.selenium.WebDriver;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
-public class TestLogin extends BaseTest{
+public class TestLogin extends BaseTest {
     private static WebDriver driver;
-
-    @BeforeClass
-    public static void setUp(){
-        driver = getDriver();
-    }
 
     @Test
     public void testSignIn() {
