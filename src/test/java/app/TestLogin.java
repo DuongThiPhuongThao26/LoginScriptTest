@@ -4,16 +4,26 @@ import Utils.Utils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 @DisplayName("JUNIT5")
 public class TestLogin extends BaseTest {
-
     @Test
-    public void testSignIn() {
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login(Utils.email, Utils.pwd);
+    public void testLogin() throws Exception {
+        ReadExcelFile excel = new ReadExcelFile();
         HomePage homePage = new HomePage(driver);
-        assertEquals(Utils.urlExpected, homePage.getUrl());
+        for (int i = 1; i <= 3; i++) {
+
+            excel.setExcelFile("src/test/resources/dataTestForLogin.xlsx", "Sheet1");
+            LoginPage loginPage = new LoginPage(driver);
+            loginPage.login(excel.getCellData("email", i), excel.getCellData("password", i));
+        }
+        for (int i = 1; i <= 3; i++) {
+            Thread.sleep(3000);
+            if (Utils.urlExpected.equals(homePage.getUrl())) {
+                excel.setCellData("PASSED", i, 2);
+            } else {
+                excel.setCellData("FAILED", i, 2);
+            }
+        }
+
     }
 }

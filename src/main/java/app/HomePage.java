@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class HomePage extends BasePage {
-
-    WebDriver driver;
     BasePage basePage;
 
     public static final By womenTab = By.xpath("//span[normalize-space()='Women']");

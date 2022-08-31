@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class ViewCartPage extends ProductPage {
-    WebDriver driver;
     ProductPage productPage;
 
     public static final By trashIcon = By.xpath("//a[@class='action action-delete']");

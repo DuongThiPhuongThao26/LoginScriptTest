@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 public class ProductPage extends BasePage {
-    WebDriver driver;
     BasePage basePage;
 
     public static final By productSize = By.xpath("//div[contains(@option-label,'M')]");

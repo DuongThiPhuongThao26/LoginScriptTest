@@ -4,8 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 public class WomenPage extends HomePage {
-
-    WebDriver driver;
     HomePage homePage;
 
     public static final By category = By.xpath("//a[contains(text(),'Tops')]");
