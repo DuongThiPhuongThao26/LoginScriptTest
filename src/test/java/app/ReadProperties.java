@@ -8,7 +8,7 @@ import java.util.Properties;
 public class ReadProperties {
     private static final String FILE_CONFIG = "\\config.properties";
     private static ReadProperties instance = null;
-    private Properties properties = new Properties();
+    private final Properties properties = new Properties();
 
     public static ReadProperties getInstance() {
         if (instance == null) {

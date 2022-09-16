@@ -3,10 +3,12 @@ package app;
 import Utils.Utils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @DisplayName("JUNIT5")
 public class TestEditProduct extends BaseTest {
+
     public void navigateToProductPage() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login(Utils.email, Utils.pwd);

@@ -1,11 +1,14 @@
 package app;
+
 import Utils.Utils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static app.BaseTest.driver;
+import static org.junit.Assert.assertEquals;
 
 @DisplayName("JUNIT5")
-public class TestAddCart extends BaseTest {
+public class TestAddCart {
     @Test
     public void testAddToCart() {
         LoginPage loginPage = new LoginPage(driver);
@@ -23,5 +26,6 @@ public class TestAddCart extends BaseTest {
         productPage.clickOnAddToCartButton();
 
         assertEquals(Utils.expectedAddSuccess, productPage.getMessageAddSuccess());
+
     }
 }

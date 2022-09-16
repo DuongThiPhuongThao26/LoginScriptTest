@@ -15,10 +15,8 @@ public class ReadExcelFile {
     private Sheet sh;
     private Cell cell;
     private Row row;
-    private CellStyle cellstyle;
-    private Color mycolor;
     private String excelFilePath;
-    private Map<String, Integer> columns = new HashMap<>();
+    private final Map<String, Integer> columns = new HashMap<>();
 
     public void setExcelFile(String ExcelPath, String SheetName) {
         try {
@@ -80,10 +78,9 @@ public class ReadExcelFile {
     }
 
     public void setCellData(String text, int rownum, int colnum) throws Exception {
-        try{
-            row  = sh.getRow(rownum);
-            if(row ==null)
-            {
+        try {
+            row = sh.getRow(rownum);
+            if (row == null) {
                 row = sh.createRow(rownum);
             }
             cell = row.getCell(colnum);
@@ -97,7 +94,7 @@ public class ReadExcelFile {
             wb.write(fileOut);
             fileOut.flush();
             fileOut.close();
-        }catch(Exception e){
+        } catch (Exception e) {
             throw (e);
         }
     }

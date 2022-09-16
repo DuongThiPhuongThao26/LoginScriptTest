@@ -6,10 +6,12 @@ import org.junit.jupiter.api.DisplayName;
 
 @DisplayName("JUNIT5")
 public class TestLogin extends BaseTest {
+    HomePage homePage;
+
     @Test
     public void testLogin() throws Exception {
         ReadExcelFile excel = new ReadExcelFile();
-        HomePage homePage = new HomePage(driver);
+        homePage = new HomePage(driver);
         for (int i = 1; i <= 3; i++) {
 
             excel.setExcelFile("src/test/resources/dataTestForLogin.xlsx", "Sheet1");
