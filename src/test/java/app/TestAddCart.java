@@ -4,11 +4,10 @@ import Utils.Utils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
-import static app.BaseTest.driver;
 import static org.junit.Assert.assertEquals;
 
 @DisplayName("JUNIT5")
-public class TestAddCart {
+public class TestAddCart extends BaseTest{
     @Test
     public void testAddToCart() {
         LoginPage loginPage = new LoginPage(driver);

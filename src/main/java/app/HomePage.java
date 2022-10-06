@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 public class HomePage extends BasePage {
     BasePage basePage;
 
-    public static final By womenTab = By.xpath("//span[normalize-space()='Women']");
+    public static final By womenTab = By.xpath("//a[@id='ui-id-4']//span[contains(text(),'Women')]");
 
     public HomePage(WebDriver driver) {
         super(driver);
